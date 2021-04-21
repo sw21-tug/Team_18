@@ -24,13 +24,13 @@ class LoginActivityTest {
     @Test
     fun checkLoginFieldIsDisplayed() {
         onView(withId(R.id.Log_In)).perform(click())
-        onView(withId(R.id.email)).check(matches(isDisplayed()))
+        onView(withId(R.id.login_email)).check(matches(isDisplayed()))
     }
 
     @Test
     fun checkPasswordFieldIsDisplayed() {
         onView(withId(R.id.Log_In)).perform(click())
-        onView(withId(R.id.password)).check(matches(isDisplayed()))
+        onView(withId(R.id.login_password)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -42,8 +42,8 @@ class LoginActivityTest {
     @Test
     fun checkFieldsAreWritableDisplayed() {
         onView(withId(R.id.Log_In)).perform(click())
-        onView(withId(R.id.email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.password)).perform(typeText("root"))
+        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
+        onView(withId(R.id.login_password)).perform(typeText("root"))
     }
 
     @Test
@@ -55,8 +55,8 @@ class LoginActivityTest {
     @Test
     fun checkLoginFlowWorks() {
         onView(withId(R.id.Log_In)).perform(click())
-        onView(withId(R.id.email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.password)).perform(typeText("root"))
+        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
+        onView(withId(R.id.login_password)).perform(typeText("root"))
         onView(withId(R.id.login_button)).perform(click())
         onView(withId(R.id.dashboard_title)).check(matches(isDisplayed()))
     }
