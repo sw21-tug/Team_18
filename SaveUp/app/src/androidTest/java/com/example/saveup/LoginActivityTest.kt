@@ -2,9 +2,10 @@ package com.example.saveup
 
 import android.content.Intent
 import android.widget.Button
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -40,6 +41,12 @@ class LoginActivityTest {
     }
 
     @Test
+    fun checkWelcomeIsDisplayed() {
+        onView(withId(R.id.Log_In)).perform(click())
+        onView(withId(R.id.welcome_back)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun checkFieldsAreWritableDisplayed() {
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
@@ -56,7 +63,8 @@ class LoginActivityTest {
     fun checkLoginFlowWorks() {
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.login_password)).perform(typeText("root"))
+        onView(withId(R.id.login_password)).perform(typeText("root")).
+            perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
         onView(withId(R.id.dashboard_title)).check(matches(isDisplayed()))
     }
