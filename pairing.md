@@ -1,5 +1,5 @@
 ### Pairing Matrix
-Dev 1: Daniel Fürpaß <> fuerpass
+Dev 1: Daniel Fürpaß # fuerpass
 Dev 2: Nico Alois Kaschowitz  <> Noggis
 Dev 3: Jakob Tropper <> JayTropper
 Dev 4: Erwin Wagner <> irv78
