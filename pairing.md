@@ -16,6 +16,6 @@ Dev 6: Christian Weber
 | Dev 1       | X           | HH:MM       | HH:MM       | 12:00       | HH:MM       | 04:00       | 
 | Dev 2       | HH:MM       | X           | HH:MM       | HH:MM       | 04:00       | HH:MM       | 
 | Dev 3       | HH:MM       | HH:MM       | X           | HH:MM       | HH:MM       | HH:MM       | 
-| Dev 4       | 16:00       | HH:MM       | HH:MM       | X           | HH:MM       | 04:00       | 
+| Dev 4       | 12:00       | HH:MM       | HH:MM       | X           | HH:MM       | 04:00       | 
 | Dev 5       | HH:MM       | 04:00       | HH:MM       | HH:MM       | X           | HH:MM       |
 | Dev 6       | 04:00       | HH:MM       | HH:MM       | 04:00       | HH:MM       | X           | 
