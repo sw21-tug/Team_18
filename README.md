@@ -4,7 +4,7 @@
 $aveUp is a personal finance application that helps you manage your money more effectively by keeping track of your income and expenses. You can easily record your expenses and income, view them monthly under specific categories, and easily manage your budget. 
 
 
-h 
+
 ### Team members
 
 | Role             | Name                  | 
@@ -22,8 +22,8 @@ h
 
 
 ### Schedule
-| :---             |    :----:             |
 | :heavy_check_mark: **24 March 2021** | Team bonding period  |
+| :---             |    :----:             |
 | :heavy_check_mark: **14 April 2021**  | Sprint 1 |
 | :heavy_check_mark: **21 April 2021**  | Sprint 1 |
 |**28 April 2021**  | Sprint 2 |
