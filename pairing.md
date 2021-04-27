@@ -1,21 +1,18 @@
 ### Pairing Matrix
-Dev 1: Daniel Fürpaß
-Dev 2: Nico Alois Kaschowitz
-Dev 3: Kilian Weisl
-Dev 4: Jakob Tropper
-Dev 5: Erwin Wagner
-Dev 6: Christian Weber
+Dev 1: Daniel Fürpaß <!--- fuerpass -->
+Dev 2: Nico Alois Kaschowitz  <!--- Noggis -->
+Dev 3: Jakob Tropper <!--- JayTropper -->
+Dev 4: Erwin Wagner <!--- irv78 -->
+Dev 5: Christian Weber <!--- Chrisi52 -->
+Dev 6: Kilian Weisl <!--- kilianweisl -->
 
 
 
-
-
-
-| Syntax      | Daniel Fürpaß       | Nico Alois Kaschowitz       | Kilian Weisl       | Jakob Tropper       | Erwin Wagner       | Christian Weber       | 
+| Syntax      | Dev 1       | Dev 2       | Dev 3       | Dev 4       | Dev 5       | Dev 6       | 
 | :---        |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   |    :----:   | 
-| Dev 1       | X           | HH:MM       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | 
-| Dev 2       | HH:MM       | X           | HH:MM       | HH:MM       | HH:MM       | HH:MM       | 
-| Dev 3       | HH:MM       | HH:MM       | X           | HH:MM       | HH:MM       | HH:MM       | 
-| Dev 4       | HH:MM       | HH:MM       | HH:MM       | X           | HH:MM       | HH:MM       | 
-| Dev 5       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | X           | HH:MM       |
-| Dev 6       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | HH:MM       | X           | 
+| Dev 1       | X           | HH:MM       | 08:00       | HH:MM       | 04:00       | HH:MM       | 
+| Dev 2       | HH:MM       | X           | HH:MM       | 04:00       | HH:MM       | 10:00       | 
+| Dev 3       | 08:00       | HH:MM       | X           | HH:MM       | 04:00       | HH:MM       | 
+| Dev 4       | HH:MM       | 04:00       | HH:MM       | X           | HH:MM       | 04:00       | 
+| Dev 5       | 04:00       | HH:MM       | 04:00       | HH:MM       | X           | HH:MM       |
+| Dev 6       | HH:MM       | 10:00       | HH:MM       | 04:00       | HH:MM       | X           | 
