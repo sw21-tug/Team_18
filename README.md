@@ -6,8 +6,9 @@ $aveUp is a personal finance application that helps you manage your money more e
 
 
 ## Vision
-For many people the idea of logging every transaction into a personal budget sounds
 
+Managing our budget is crucial anytime but especially right now, with the impact of COVID-19 on the economy. The financial implications of the COVID-19 have affected our bill payments, mortgages, car payments. 
+For many people, the idea of logging every transaction into a personal budget sounds like the world's tedious, insignificant task. But truthfully, there are several critical benefits. We should track our expenses to identify and eliminate wasteful spending habits in our financial life. Tracking our costs will help us maintain control of our finances and promote better financial practices like saving & investing.
 
 
 ### Team members
@@ -44,9 +45,15 @@ For many people the idea of logging every transaction into a personal budget sou
 ### Implemented Features
 
 :heavy_check_mark: **SAUP-01** Create Database 
+
 :heavy_check_mark: **SAUP-02** Initialize PHP-Backend 
+
 :heavy_check_mark: **SAUP-03** Initialize project
+
 :heavy_check_mark: **SAUP-04** Designing Logo
+
 :heavy_check_mark: **SAUP-05** Include logo in project
+
 :heavy_check_mark: **SAUP-08** Include user login
+
 :heavy_check_mark: **SAUP-14** Create home page
