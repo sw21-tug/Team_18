@@ -32,6 +32,7 @@
         android:id="@+id/Sign_Up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="startRegistration"
         android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
