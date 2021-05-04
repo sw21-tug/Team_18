@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">登錄</string>
+    <string name="login_log">您的個人財務經理 </string>
+    <string name="login_email">電子郵件 </string>
+    <string name="login_password">密碼 </string>
+    <string name="login_button">登錄 </string>
+    <string name="dashboard_title">儀表板頁面 </string>
+    <string name="log_in">登錄</string>
+    <string name="sign_up">報名</string>
+    <string name="welcome_back">歡迎回來！</string>
+    <string name="logo">商標</string>
+    <string name="change_lang">Change language</string>
+</resources>
