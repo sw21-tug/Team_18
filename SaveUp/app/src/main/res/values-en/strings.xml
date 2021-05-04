@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Login</string>
     <string name="login_log">Your Easy Personal Fiance Manager </string>
@@ -9,9 +10,5 @@
     <string name="sign_up">Sign Up</string>
     <string name="welcome_back">Welcome back!</string>
     <string name="logo">logo</string>
-    <string name="create_account">Create Account</string>
-    <string name="registration_button">Register</string>
-    <string name="registration_prename">Prename</string>
-    <string name="registration_lastname">Name</string>
     <string name="change_lang">Change language</string>
 </resources>
