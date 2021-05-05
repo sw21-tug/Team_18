@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SaveUp</string>
+    <string name="app_name">Login</string>
     <string name="login_log">Your Easy Personal Fiance Manager </string>
     <string name="login_email">Email </string>
     <string name="login_password">Password </string>
@@ -11,7 +11,7 @@
     <string name="logo">logo</string>
     <string name="title_activity_form_acitivity">FormAcitivity</string>
 
-    // form activity
+// form activity
     <string name="tab_text_1">Income</string>
     <string name="tab_text_2">Expense</string>
     <string name="text_euro">EUR</string>
@@ -22,7 +22,7 @@
     <string name="save_button">Save</string>
     <string name="date_placeholder">01.01.2020</string>
 
-    // profile activity
+// profile activity
     <string name="adds_form">adds form</string>
 
     <string name="create_account">Create Account</string>

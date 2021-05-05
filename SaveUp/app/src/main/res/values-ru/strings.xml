@@ -5,11 +5,27 @@
     <string name="login_email">Электронное письмо</string>
     <string name="login_password">Пароль</string>
     <string name="login_button">Авторизоваться</string>
-    <string name="dashboard_title">Страница панели инструментов</string>
+    <string name="profile_title">Страница панели инструментов</string>
     <string name="log_in">Авторизоваться</string>
     <string name="sign_up">Зарегистрироваться</string>
     <string name="welcome_back">Добро пожаловать обратно!</string>
     <string name="logo">логотип</string>
+    <string name="title_activity_form_acitivity">ФормаАктивность</string>
+
+    // form activity
+    <string name="tab_text_1">Доход</string>
+    <string name="tab_text_2">Расходы</string>
+    <string name="text_euro">EUR</string>
+    <string name="text_date">Дата</string>
+    <string name="text_account">Счет</string>
+    <string name="text_category">Категория</string>
+    <string name="text_description">Описание</string>
+    <string name="save_button">Сохранить</string>
+    <string name="date_placeholder">01.01.2020</string>
+
+    // profile activity
+    <string name="adds_form">добавляет форму</string>
+
     <string name="create_account">Зарегистрироваться</string>
     <string name="registration_button">регистр</string>
     <string name="registration_prename">Имя</string>
