@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Login</string>
+    <string name="app_name">SaveUp</string>
     <string name="login_log">Your Easy Personal Fiance Manager </string>
     <string name="login_email">Email </string>
     <string name="login_password">Password </string>
@@ -20,6 +20,7 @@
     <string name="text_category">Category</string>
     <string name="text_description">Description</string>
     <string name="save_button">Save</string>
+    <string name="date_placeholder">01.01.2020</string>
 
     // profile activity
     <string name="adds_form">adds form</string>

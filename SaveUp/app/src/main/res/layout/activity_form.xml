@@ -4,11 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".FormActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/BarHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/gradient_background"
         android:theme="@style/Theme.SaveUp.AppBarOverlay"
         android:visibility="visible"
         tools:visibility="visible">
@@ -27,7 +30,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary" />
+            android:background="@android:drawable/divider_horizontal_dark" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

@@ -1,15 +1,27 @@
 package com.example.saveup.ui.form
 
+import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.example.saveup.FormActivity
 import com.example.saveup.R
+import java.lang.reflect.Method
+import java.nio.charset.Charset
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * A placeholder fragment containing a simple view.
@@ -32,15 +44,41 @@ class IncomeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_income, container, false)
 
         val save_income: View = root.findViewById(R.id.save_button_income)
+
         save_income.setOnClickListener{
-            val income_text = root.findViewById<EditText>(R.id.euro_income).text.toString()
-            // val income = Integer.parseInt(income_text)
+            val type = "income"
+            val income_amount = root.findViewById<EditText>(R.id.euro_income).text.toString()
             val date = root.findViewById<EditText>(R.id.date_input_field_income).text.toString()
             val account = root.findViewById<EditText>(R.id.account_input_field_income).text.toString()
             val category = root.findViewById<EditText>(R.id.category_input_field_income).text.toString()
             val description = root.findViewById<EditText>(R.id.description_input_field_income).text.toString()
 
-            // root.findViewById<TextView>(R.id.test_text_view).text = account
+            val queue = Volley.newRequestQueue(this.context)
+            val url = "https://saveup.weisl.cc/userdata"
+
+            val requestBody = "type=" + type + "&amount=" + income_amount + "&date=" + date +
+                              "&account=" + account + "&category=" + category +
+                              "&description=" + description
+
+            val stringReq : StringRequest =
+                    object : StringRequest(Method.POST, url,
+                            Response.Listener { response ->
+                                // response
+                                val strResp = response.toString()
+
+                                Log.d("API", strResp)
+                                Toast.makeText(this.context, "Income stored", Toast.LENGTH_SHORT).show()
+                            },
+                            Response.ErrorListener { error ->
+                                Log.d("API", "error => $error")
+                                Toast.makeText(this.context, "Storing failed", Toast.LENGTH_SHORT).show()
+                            }
+                    ){
+                        override fun getBody(): ByteArray {
+                            return requestBody.toByteArray(Charset.defaultCharset())
+                        }
+                    }
+            queue.add(stringReq)
         }
 
         return root

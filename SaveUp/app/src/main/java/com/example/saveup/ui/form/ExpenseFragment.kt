@@ -1,15 +1,21 @@
 package com.example.saveup.ui.form
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.saveup.R
+import java.nio.charset.Charset
 
 /**
  * A placeholder fragment containing a simple view.
@@ -33,14 +39,42 @@ class ExpenseFragment : Fragment() {
 
         val save_expense: View = root.findViewById(R.id.save_button_expense)
         save_expense.setOnClickListener{
-            val expense_text = root.findViewById<EditText>(R.id.euro_expense).text.toString()
-            // val expense = Integer.parseInt(expense_text)
-            val date = root.findViewById<EditText>(R.id.date_input_field_expense).text.toString()
-            val account = root.findViewById<EditText>(R.id.account_input_field_expense).text.toString()
-            val category = root.findViewById<EditText>(R.id.category_input_field_expense).text.toString()
-            val description = root.findViewById<EditText>(R.id.description_input_field_expense).text.toString()
 
-            // root.findViewById<TextView>(R.id.test_text_view).text = account
+            save_expense.setOnClickListener{
+                val type = "expense"
+                val expense_text = root.findViewById<EditText>(R.id.euro_expense).text.toString()
+                val date = root.findViewById<EditText>(R.id.date_input_field_expense).text.toString()
+                val account = root.findViewById<EditText>(R.id.account_input_field_expense).text.toString()
+                val category = root.findViewById<EditText>(R.id.category_input_field_expense).text.toString()
+                val description = root.findViewById<EditText>(R.id.description_input_field_expense).text.toString()
+
+                val queue = Volley.newRequestQueue(this.context)
+                val url = "https://saveup.weisl.cc/userdata"
+
+                val requestBody = "type=" + type + "&amount=" + expense_text + "&date=" + date +
+                        "&account=" + account + "&category=" + category +
+                        "&description=" + description
+
+                val stringReq : StringRequest =
+                        object : StringRequest(Method.POST, url,
+                                Response.Listener { response ->
+                                    // response
+                                    val strResp = response.toString()
+
+                                    Log.d("API", strResp)
+                                    Toast.makeText(this.context, "Expense stored", Toast.LENGTH_SHORT).show()
+                                },
+                                Response.ErrorListener { error ->
+                                    Log.d("API", "error => $error")
+                                    Toast.makeText(this.context, "Storing failed", Toast.LENGTH_SHORT).show()
+                                }
+                        ){
+                            override fun getBody(): ByteArray {
+                                return requestBody.toByteArray(Charset.defaultCharset())
+                            }
+                        }
+                queue.add(stringReq)
+            }
         }
 
         return root
