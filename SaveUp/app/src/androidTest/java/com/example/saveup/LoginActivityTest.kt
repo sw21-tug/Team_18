@@ -1,8 +1,5 @@
 package com.example.saveup
 
-import android.content.Intent
-import android.widget.Button
-import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.*
@@ -12,7 +9,6 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Test
 
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.runner.RunWith
 
@@ -64,8 +60,8 @@ class LoginActivityTest {
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
         onView(withId(R.id.login_password)).perform(typeText("root")).
-            perform(ViewActions.closeSoftKeyboard())
+            perform(closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.dashboard_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
     }
 }
