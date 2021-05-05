@@ -10,5 +10,9 @@
     <string name="sign_up">Зарегистрироваться</string>
     <string name="welcome_back">Добро пожаловать обратно!</string>
     <string name="logo">логотип</string>
+    <string name="create_account">Зарегистрироваться</string>
+    <string name="registration_button">регистр</string>
+    <string name="registration_prename">Имя</string>
+    <string name="registration_lastname">Фамилия</string>
     <string name="change_lang">Change language</string>
 </resources>

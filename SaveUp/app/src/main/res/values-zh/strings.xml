@@ -10,5 +10,9 @@
     <string name="sign_up">報名</string>
     <string name="welcome_back">歡迎回來！</string>
     <string name="logo">商標</string>
+    <string name="create_account">創建帳號</string>
+    <string name="registration_button">登記</string>
+    <string name="registration_prename">名</string>
+    <string name="registration_lastname">姓</string>
     <string name="change_lang">Change language</string>
 </resources>
