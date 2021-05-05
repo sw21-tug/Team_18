@@ -10,14 +10,16 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/logo"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
         app:layout_constraintBottom_toTopOf="@id/login_view"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/black" />
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_view"
