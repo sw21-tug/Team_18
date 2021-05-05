@@ -24,4 +24,10 @@
 
     // profile activity
     <string name="adds_form">adds form</string>
+
+    <string name="create_account">Create Account</string>
+    <string name="registration_button">Register</string>
+    <string name="registration_prename">Prename</string>
+    <string name="registration_lastname">Name</string>
+    <string name="change_lang">Change language</string>
 </resources>
