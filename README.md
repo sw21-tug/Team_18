@@ -32,8 +32,8 @@ For many people, the idea of logging every transaction into a personal budget so
 | :---             |    :----:             |
 | :heavy_check_mark: **14 April 2021**  | **Sprint 1** |
 | :heavy_check_mark: **21 April 2021**  | **Sprint 1** |
-|**28 April 2021**  | Sprint 2 |
-| **05 May 2021**  | Sprint 2 (1 Release, 23:59) |
+| :heavy_check_mark: **28 April 2021**  | Sprint 2 |
+| :heavy_check_mark: **05 May 2021**  | Sprint 2 (1 Release, 23:59) |
 | **12 May 2021**  | Sprint 3 |
 | **19 May 2021**  | Sprint 3 |
 | **26 May 2021**  | Sprint 4 |
