@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">登錄</string>
+    <string name="login_log">您的個人財務經理 </string>
+    <string name="login_email">電子郵件 </string>
+    <string name="login_password">密碼 </string>
+    <string name="login_button">登錄 </string>
+    <string name="profile_title">儀表板頁面 </string>
+    <string name="log_in">登錄</string>
+    <string name="sign_up">報名</string>
+    <string name="welcome_back">歡迎回來！</string>
+    <string name="logo">商標</string>
+    <string name="title_activity_form_acitivity">表格活動</string>
+
+    // form activity
+    <string name="tab_text_1">收入</string>
+    <string name="tab_text_2">費用</string>
+    <string name="text_euro">EUR</string>
+    <string name="text_date">日期</string>
+    <string name="text_account">帳戶</string>
+    <string name="text_category">類別</string>
+    <string name="text_description">描述</string>
+    <string name="save_button">保存</string>
+    <string name="date_placeholder">01.01.2020</string>
+
+    // profile activity
+    <string name="adds_form">添加表格</string>
+
+    <string name="create_account">創建帳號</string>
+    <string name="registration_button">登記</string>
+    <string name="registration_prename">名</string>
+    <string name="registration_lastname">姓</string>
+    <string name="change_lang">Change language</string>
+</resources>
