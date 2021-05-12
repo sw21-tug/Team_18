@@ -37,18 +37,24 @@
         android:stretchColumns="1">
 
         <TableRow
+            android:id="@+id/table_head"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:text="@string/text_date"
-                android:gravity="left" />
+                android:id="@+id/table_head_date"
+                android:gravity="left"
+                android:text="@string/text_date" />
+
             <TextView
-                android:text="@string/text_category"
-                android:gravity="center"/>
+                android:id="@+id/table_head_category"
+                android:gravity="center"
+                android:text="@string/text_category" />
+
             <TextView
-                android:text="@string/text_euro"
-                android:gravity="right"/>
+                android:id="@+id/table_head_euro"
+                android:gravity="right"
+                android:text="@string/text_euro" />
         </TableRow>
 
         <TableRow

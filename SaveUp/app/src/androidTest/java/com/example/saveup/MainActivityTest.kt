@@ -54,7 +54,7 @@ class MainActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.dashboard_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.table_head)).check(matches(isDisplayed()))
     }
     @Test
     fun checkChangeLanguageRussian() {
@@ -66,7 +66,7 @@ class MainActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.dashboard_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.table_head)).check(matches(isDisplayed()))
     }
     @Test
     fun checkChangeLanguageEnglish() {
@@ -78,6 +78,6 @@ class MainActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.dashboard_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.table_head)).check(matches(isDisplayed()))
     }
 }

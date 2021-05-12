@@ -5,7 +5,6 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -27,7 +26,7 @@ class ProfileActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.table_head)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -127,5 +126,22 @@ class ProfileActivityTest {
 
         onView(withId(R.id.save_button_expense)).check(matches(isDisplayed()))
         onView(withId(R.id.save_button_expense)).check(matches(isClickable()))
+    }
+
+    @Test
+    fun checkTableHeaderIsDisplayed() {
+        getToProfilePage()
+        onView(withId(R.id.table_head)).check(matches(isDisplayed()))
+        onView(withId(R.id.table_head)).perform(typeText("computer"))
+
+    }
+
+    @Test
+    fun checkTableHeaderTextIsDisplayed() {
+        getToProfilePage()
+        onView(withId(R.id.table_head_date)).check(matches(isDisplayed()))
+        onView(withId(R.id.table_head_category)).check(matches(isDisplayed()))
+        onView(withId(R.id.table_head_euro)).check(matches(isDisplayed()))
+
     }
 }
