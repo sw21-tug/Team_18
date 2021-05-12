@@ -11,6 +11,7 @@ import org.junit.Test
 
 import org.junit.Rule
 import org.junit.runner.RunWith
+import java.lang.Thread.sleep
 
 @RunWith(AndroidJUnit4::class)
 class LoginActivityTest {
@@ -123,5 +124,49 @@ class LoginActivityTest {
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
         onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+    }
+    @Test
+    fun checkDatabaseLoginTrue() {
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("English")).check(matches(isDisplayed()))
+        onView(withText("English")).perform(click())
+
+        onView(withId(R.id.Sign_Up)).perform(click())
+        onView(withId(R.id.registration_prename)).perform(typeText("Max"))
+        onView(withId(R.id.registration_lastname)).perform(typeText("Mustermann"))
+        onView(withId(R.id.registration_email)).perform(typeText("max@mustermann.xxx")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.registration_password)).perform(typeText("test123")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.registration_button)).perform(click())
+        sleep(5000)
+
+        onView(withId(R.id.login_email)).perform(typeText("max@mustermann.xxx"))
+        onView(withId(R.id.login_password)).perform(typeText("test123")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_button)).perform(click())
+        onView(withText("profile page")).check(matches(isDisplayed()))
+    }
+    @Test
+    fun checkDatabaseLoginFalse() {
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("English")).check(matches(isDisplayed()))
+        onView(withText("English")).perform(click())
+
+        onView(withId(R.id.Sign_Up)).perform(click())
+        onView(withId(R.id.registration_prename)).perform(typeText("Max"))
+        onView(withId(R.id.registration_lastname)).perform(typeText("Mustermann"))
+        onView(withId(R.id.registration_email)).perform(typeText("max@mustermann.xxx")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.registration_password)).perform(typeText("test123")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.registration_button)).perform(click())
+        sleep(5000)
+
+        onView(withId(R.id.login_email)).perform(typeText("max@mustermann.xxx"))
+        onView(withId(R.id.login_password)).perform(typeText("apfel123")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_button)).perform(click())
+        onView(withId(R.id.login_email)).check(matches(isDisplayed()))
     }
 }
