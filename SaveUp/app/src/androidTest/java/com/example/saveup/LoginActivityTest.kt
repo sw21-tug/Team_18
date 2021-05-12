@@ -145,6 +145,7 @@ class LoginActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("test123")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
+        sleep(5000)
         onView(withText("profile page")).check(matches(isDisplayed()))
     }
     @Test
