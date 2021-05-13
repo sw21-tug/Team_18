@@ -34,7 +34,6 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".LoginActivity"/>
         <activity android:name=".RegistrationActivity"/>
-        <activity android:name=".DashboardActivity"/>
     </application>
 
 </manifest>
