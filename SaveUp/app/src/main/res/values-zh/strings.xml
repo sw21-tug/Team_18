@@ -12,6 +12,13 @@
     <string name="logo">商標</string>
     <string name="title_activity_form_acitivity">表格活動</string>
 
+    // form list
+    <string name="list_text_id">ID : </string>
+    <string name="list_text_type">类型 : </string>
+    <string name="list_text_date">日期 : </string>
+    <string name="list_text_description">描述 : </string>
+    <string name="list_text_amount">数量 : </string>
+
     // form activity
     <string name="tab_text_1">收入</string>
     <string name="tab_text_2">費用</string>
@@ -21,7 +28,7 @@
     <string name="text_category">類別</string>
     <string name="text_description">描述</string>
     <string name="save_button">保存</string>
-    <string name="date_placeholder">01.01.2020</string>
+    <string name="date_placeholder">TT.MM.JJJJ</string>
 
     // profile activity
     <string name="adds_form">添加表格</string>

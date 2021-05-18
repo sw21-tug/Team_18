@@ -12,6 +12,13 @@
     <string name="logo">логотип</string>
     <string name="title_activity_form_acitivity">ФормаАктивность</string>
 
+    // form list
+    <string name="list_text_id">я бы : </string>
+    <string name="list_text_type">тип : </string>
+    <string name="list_text_date">Дата : </string>
+    <string name="list_text_description">Описание : </string>
+    <string name="list_text_amount">количество : </string>
+
     // form activity
     <string name="tab_text_1">Доход</string>
     <string name="tab_text_2">Расходы</string>
@@ -21,7 +28,7 @@
     <string name="text_category">Категория</string>
     <string name="text_description">Описание</string>
     <string name="save_button">Сохранить</string>
-    <string name="date_placeholder">01.01.2020</string>
+    <string name="date_placeholder">TT.MM.JJJJ</string>
 
     // profile activity
     <string name="adds_form">добавляет форму</string>

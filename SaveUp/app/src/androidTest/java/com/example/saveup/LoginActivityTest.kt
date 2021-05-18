@@ -62,7 +62,7 @@ class LoginActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
             perform(closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.table_head)).check(matches(isDisplayed()))
+        onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -86,7 +86,7 @@ class LoginActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -110,7 +110,7 @@ class LoginActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
     @Test
     fun checkChangeLanguageEnglish() {
@@ -122,6 +122,6 @@ class LoginActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
 }
