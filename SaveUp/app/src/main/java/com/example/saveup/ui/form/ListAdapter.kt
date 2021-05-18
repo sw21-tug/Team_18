@@ -1,5 +1,4 @@
-package com.example.saveup.ui.form
-
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -7,27 +6,49 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.saveup.R
+import com.example.saveup.ui.form.FormData
+import kotlinx.android.synthetic.main.form_data_layout.view.*
+import org.w3c.dom.Text
 
-class ItemAdapter(
-    private val context: Context,
-    private val dataset: ArrayList<FormData>
-) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+class ListAdapter(val context: Context, val items: ArrayList<FormData>) :
+    RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
-    class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.test_view)
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val formId: TextView = view.form_id
+        val formType: TextView = view.form_type
+        val formDate: TextView = view.form_date
+        val formDescription: TextView = view.form_description
+        val formAmount: TextView = view.form_amount
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.activity_profile, parent, false)
-        return ItemViewHolder(adapterLayout)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.form_data_layout, parent, false
+            )
+        )
     }
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = dataset[position]
-        val string = item.date + " " + item.description + " " + item.amount
-        holder.textView.text = string
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        val item = items[position]
+
+        holder.formId.text = item.id
+        holder.formType.text = item.type
+        holder.formDate.text = item.date
+        holder.formDescription.text = item.description
+        holder.formAmount.text = item.amount
+
+        if (item.type == "income")
+            holder.formAmount.setTextColor(context.resources.getColor(R.color.dark_green))
+        else if (item.type == "expense")
+            holder.formAmount.setTextColor(context.resources.getColor(R.color.wine))
     }
 
-    override fun getItemCount() = dataset.size
+
+    override fun getItemCount(): Int {
+        return items.size
+    }
 }

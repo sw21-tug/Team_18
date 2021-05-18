@@ -1,24 +1,20 @@
 package com.example.saveup
 
+import ListAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.util.JsonReader
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.saveup.ui.form.FormData
-import com.example.saveup.ui.form.ItemAdapter
 import org.json.JSONArray
 import org.json.JSONException
-import java.io.Reader
-import java.lang.Thread.sleep
-import java.net.URLEncoder
+import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity: AppCompatActivity() {
 
@@ -31,8 +27,12 @@ class ProfileActivity: AppCompatActivity() {
             val intent = Intent (this, FormActivity::class.java)
             startActivity(intent)
         }
-
         getExpensesFromDatabase()
+
+        val usersList: ArrayList<FormData> = ArrayList()
+        form_list.layoutManager = LinearLayoutManager(this)
+        val itemAdapter = ListAdapter(this, usersList)
+        form_list.adapter = itemAdapter
     }
 
     private fun getExpensesFromDatabase(){
@@ -46,7 +46,7 @@ class ProfileActivity: AppCompatActivity() {
                     val json_string = response.toString()
                     Log.d("API", json_string)
                     Toast.makeText(this, "Got data for list", Toast.LENGTH_SHORT).show()
-                    displayListOfData(json_string)
+                    updateList(json_string)
                 },
                 Response.ErrorListener { error ->
                     Log.d("API", "error => $error")
@@ -56,29 +56,30 @@ class ProfileActivity: AppCompatActivity() {
         queue.add(stringReq)
     }
 
-    private fun displayListOfData(json_string: String)
-    {
-        try {
-            // val encodedString = URLEncoder.encode(json_string, "utf-8")
-            val jsonArray = JSONArray(json_string)
-            val arrayList: ArrayList<FormData> = ArrayList()
-            var i = 0
-            while (i < jsonArray.length()) {
-                val data = FormData(
-                    jsonArray.getJSONObject(i)["date"].toString(),
-                    jsonArray.getJSONObject(i)["category"].toString(),
-                    jsonArray.getJSONObject(i)["amount"].toString()
-                )
-                arrayList.add(data)
-                i += 1
-            }
+    private fun updateList(json_string: String) {
+        val usersList: ArrayList<FormData> = ArrayList()
 
-            val recyclerView = findViewById<RecyclerView>(R.id.form_list)
-            recyclerView.adapter = ItemAdapter(this, arrayList)
-            recyclerView.setHasFixedSize(true)
+        try {
+            val usersArray = JSONArray(json_string)
+
+            for (i in 0 until usersArray.length()) {
+                val user = usersArray.getJSONObject(i)
+                val id = user.getString("id")
+                val type = user.getString("type")
+                val date = user.getString("date")
+                val description = user.getString("description")
+                val amount = user.getString("amount")
+
+                val formDetails = FormData(id, type, date, description, amount)
+
+                usersList.add(formDetails)
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
         }
-        catch (e: JSONException) {
-            println(e)
-        }
+
+        form_list.layoutManager = LinearLayoutManager(this)
+        val itemAdapter = ListAdapter(this, usersList)
+        form_list.adapter = itemAdapter
     }
 }

@@ -27,61 +27,12 @@
         android:id="@+id/form_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="550dp"
+        android:background="@android:color/transparent"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:scrollbars="vertical"/>
-    <!-- app:layoutManager="LinearLayoutManager" -->
-
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="300dp"
-        android:padding="10dp"
-        android:stretchColumns="1"
-        app:layout_constraintBottom_toTopOf="@+id/form_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
-            android:id="@+id/table_head"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/table_head_date"
-                android:gravity="left"
-                android:text="@string/text_date" />
-
-            <TextView
-                android:id="@+id/table_head_category"
-                android:gravity="center"
-                android:text="@string/text_category" />
-
-            <TextView
-                android:id="@+id/table_head_euro"
-                android:gravity="right"
-                android:text="@string/text_euro" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/test_view"
@@ -89,7 +40,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/form_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
