@@ -5,6 +5,7 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -143,5 +144,68 @@ class ProfileActivityTest {
         onView(withId(R.id.table_head_category)).check(matches(isDisplayed()))
         onView(withId(R.id.table_head_euro)).check(matches(isDisplayed()))
 
+    }
+
+    @Test
+    fun checkChangeLanguageEnglish() {
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("English")).check(matches(isDisplayed()))
+        onView(withText("English")).perform(click())
+        onView(withId(R.id.Log_In)).perform(click())
+        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
+        onView(withId(R.id.login_password)).perform(typeText("root")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_button)).perform(click())
+        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.form_button)).perform(click())
+
+        onView(withId(R.id.euro_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.date_input_field_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.account_input_field_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.category_input_field_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.description_input_field_income)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun checkChangeLanguageRussian() {
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Russian")).check(matches(isDisplayed()))
+        onView(withText("Russian")).perform(click())
+        onView(withId(R.id.Log_In)).perform(click())
+        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
+        onView(withId(R.id.login_password)).perform(typeText("root")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_button)).perform(click())
+        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.form_button)).perform(click())
+
+        onView(withId(R.id.euro_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.date_input_field_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.account_input_field_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.category_input_field_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.description_input_field_income)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun checkChangeLanguageChinese() {
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Chinese")).check(matches(isDisplayed()))
+        onView(withText("Chinese")).perform(click())
+        onView(withId(R.id.Log_In)).perform(click())
+        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
+        onView(withId(R.id.login_password)).perform(typeText("root")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_button)).perform(click())
+        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.form_button)).perform(click())
+
+        onView(withId(R.id.euro_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.date_input_field_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.account_input_field_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.category_input_field_income)).check(matches(isDisplayed()))
+        onView(withId(R.id.description_input_field_income)).check(matches(isDisplayed()))
     }
 }

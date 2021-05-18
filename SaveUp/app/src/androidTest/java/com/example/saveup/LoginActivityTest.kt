@@ -64,4 +64,64 @@ class LoginActivityTest {
         onView(withId(R.id.login_button)).perform(click())
         onView(withId(R.id.table_head)).check(matches(isDisplayed()))
     }
+
+    @Test
+    fun checkLoginFormChinese() {
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Chinese")).check(matches(isDisplayed()))
+        onView(withText("Chinese")).perform(click())
+        onView(withId(R.id.Log_In)).perform(click())
+        onView(withText("歡迎回來！")).check(matches(isDisplayed()))
+        onView(withText("電子郵件")).check(matches(isDisplayed()))
+        onView(withText("密碼")).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun checkChangeLanguageChinese() {
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Chinese")).check(matches(isDisplayed()))
+        onView(withText("Chinese")).perform(click())
+        onView(withId(R.id.Log_In)).perform(click())
+        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
+        onView(withId(R.id.login_password)).perform(typeText("root")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_button)).perform(click())
+        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun checkLoginFormRussian() {
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Russian")).check(matches(isDisplayed()))
+        onView(withText("Russian")).perform(click())
+        onView(withId(R.id.Log_In)).perform(click())
+        onView(withText("Добро пожаловать обратно!")).check(matches(isDisplayed()))
+        onView(withText("Электронное письмо")).check(matches(isDisplayed()))
+        onView(withText("Пароль")).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun checkChangeLanguageRussian() {
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Russian")).check(matches(isDisplayed()))
+        onView(withText("Russian")).perform(click())
+        onView(withId(R.id.Log_In)).perform(click())
+        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
+        onView(withId(R.id.login_password)).perform(typeText("root")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_button)).perform(click())
+        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+    }
+    @Test
+    fun checkChangeLanguageEnglish() {
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("English")).check(matches(isDisplayed()))
+        onView(withText("English")).perform(click())
+        onView(withId(R.id.Log_In)).perform(click())
+        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
+        onView(withId(R.id.login_password)).perform(typeText("root")).
+        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_button)).perform(click())
+        onView(withId(R.id.profile_title)).check(matches(isDisplayed()))
+    }
 }
