@@ -35,6 +35,15 @@ class ProfileActivity: AppCompatActivity() {
         form_list.adapter = itemAdapter
     }
 
+    override fun onResume() {
+        super.onResume()
+        getExpensesFromDatabase()
+
+        val usersList: ArrayList<FormData> = ArrayList()
+        val itemAdapter = ListAdapter(this, usersList)
+        form_list.adapter = itemAdapter
+    }
+
     private fun getExpensesFromDatabase(){
         val queue = Volley.newRequestQueue(this)
         val url = "https://saveup.weisl.cc/userdata"
