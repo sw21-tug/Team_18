@@ -34,50 +34,49 @@ class ExpenseFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_expense, container, false)
 
         val save_expense: View = root.findViewById(R.id.save_button_expense)
+
         save_expense.setOnClickListener{
+            val type = "expense"
+            val expense_text = root.euro_expense.text.toString()
+            val date = root.date_input_field_expense.text.toString()
+            val account = root.account_input_field_expense.text.toString()
+            val category = root.category_input_field_expense.text.toString()
+            val description = root.description_input_field_expense.text.toString()
 
-            save_expense.setOnClickListener{
-                val type = "expense"
-                val expense_text = root.euro_expense.text.toString()
-                val date = root.date_input_field_expense.text.toString()
-                val account = root.account_input_field_expense.text.toString()
-                val category = root.category_input_field_expense.text.toString()
-                val description = root.description_input_field_expense.text.toString()
+            val queue = Volley.newRequestQueue(this.context)
+            val url = "https://saveup.weisl.cc/userdata"
 
-                val queue = Volley.newRequestQueue(this.context)
-                val url = "https://saveup.weisl.cc/userdata"
+            val requestBody = "type=" + type + "&amount=" + expense_text + "&date=" + date +
+                    "&account=" + account + "&category=" + category +
+                    "&description=" + description
 
-                val requestBody = "type=" + type + "&amount=" + expense_text + "&date=" + date +
-                        "&account=" + account + "&category=" + category +
-                        "&description=" + description
+            val stringReq : StringRequest =
+                object : StringRequest(Method.POST, url,
+                    Response.Listener { response ->
+                        // response
+                        val strResp = response.toString()
 
-                val stringReq : StringRequest =
-                    object : StringRequest(Method.POST, url,
-                        Response.Listener { response ->
-                            // response
-                            val strResp = response.toString()
-
-                            Log.d("API", strResp)
-                            Toast.makeText(this.context, "Expense stored", Toast.LENGTH_SHORT).show()
-                        },
-                        Response.ErrorListener { error ->
-                            Log.d("API", "error => $error")
-                            Toast.makeText(this.context, "Storing failed", Toast.LENGTH_SHORT).show()
-                        }
-                    ){
-                        override fun getBody(): ByteArray {
-                            return requestBody.toByteArray(Charset.defaultCharset())
-                        }
+                        Log.d("API", strResp)
+                        Toast.makeText(this.context, "Expense stored", Toast.LENGTH_SHORT).show()
+                    },
+                    Response.ErrorListener { error ->
+                        Log.d("API", "error => $error")
+                        Toast.makeText(this.context, "Storing failed", Toast.LENGTH_SHORT).show()
                     }
-                queue.add(stringReq)
+                ){
+                    override fun getBody(): ByteArray {
+                        return requestBody.toByteArray(Charset.defaultCharset())
+                    }
+                }
+            queue.add(stringReq)
 
-                root.euro_expense.text.clear()
-                root.date_input_field_expense.text.clear()
-                root.account_input_field_expense.text.clear()
-                root.category_input_field_expense.text.clear()
-                root.description_input_field_expense.text.clear()
-            }
+            root.euro_expense.text.clear()
+            root.date_input_field_expense.text.clear()
+            root.account_input_field_expense.text.clear()
+            root.category_input_field_expense.text.clear()
+            root.description_input_field_expense.text.clear()
         }
+
 
         return root
     }
