@@ -44,7 +44,8 @@ class RegistrationActivityTest {
         onView(withId(R.id.Sign_Up)).perform(click())
         onView(withId(R.id.registration_prename)).perform(typeText("Max"))
         onView(withId(R.id.registration_lastname)).perform(typeText("Mustermann"))
-        onView(withId(R.id.registration_email)).perform(typeText("max@mustermann.xxx"))
+        onView(withId(R.id.registration_email)).perform(typeText("max@mustermann.xxx")).
+        perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.registration_password)).perform(typeText("test123")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.registration_button)).perform(click())
