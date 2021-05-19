@@ -46,31 +46,33 @@ For many people, the idea of logging every transaction into a personal budget so
 
 #### Sprint1: 
 
-:heavy_check_mark: **SAUP-01** Create Database 
+:heavy_check_mark: **[SAUP-01]** Create Database 
 
-:heavy_check_mark: **SAUP-02** Initialize PHP-Backend 
+:heavy_check_mark: **[SAUP-02]** Initialize PHP-Backend 
 
-:heavy_check_mark: **SAUP-03** Initialize project
+:heavy_check_mark: **[SAUP-03]** Initialize project
 
-:heavy_check_mark: **SAUP-04** Designing Logo
+:heavy_check_mark: **[SAUP-04]** Designing Logo
 
-:heavy_check_mark: **SAUP-05** Include logo in project
+:heavy_check_mark: **[SAUP-05]** Include logo in project
 
-:heavy_check_mark: **SAUP-08** Include user login
+:heavy_check_mark: **[SAUP-08]** Include user login
 
 
 #### Sprint2: 
 
-:heavy_check_mark: **SAUP-07** Create new Account
+:heavy_check_mark: **[SAUP-07]** Create new Account
 
-:heavy_check_mark: **SAUP-09** Add New Expenses
+:heavy_check_mark: **[SAUP-09]** Add New Expenses
 
-:heavy_check_mark: **SAUP-15** i18n Support
+:heavy_check_mark: **[SAUP-15]** i18n Support
 
-:heavy_check_mark: **SAUP-14** Create homepage 
+:heavy_check_mark: **[SAUP-14]** Create homepage 
 
-:heavy_check_mark: **SAUP-16** Internationalize existing views 
+:heavy_check_mark: **[SAUP-16]** Internationalize existing views 
 
-:heavy_check_mark: **SAUP-19** Install password encryption 
+:heavy_check_mark: **[SAUP-19]** Install password encryption 
 
-:heavy_check_mark: **SAUP-22** Include logo on login page 
+:heavy_check_mark: **[SAUP-22]** Include logo on login page 
+
+
