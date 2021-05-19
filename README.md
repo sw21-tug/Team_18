@@ -44,7 +44,7 @@ For many people, the idea of logging every transaction into a personal budget so
 
 ### Implemented Features
 
-#Sprint1: 
+#### Sprint1: 
 
 :heavy_check_mark: **SAUP-01** Create Database 
 
@@ -59,7 +59,7 @@ For many people, the idea of logging every transaction into a personal budget so
 :heavy_check_mark: **SAUP-08** Include user login
 
 
-#Sprint2: 
+#### Sprint2: 
 
 :heavy_check_mark: **SAUP-07** Create new Account
 
