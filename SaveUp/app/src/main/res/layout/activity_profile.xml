@@ -13,12 +13,12 @@
         android:id="@+id/form_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="30dp"
         android:clickable="true"
         android:contentDescription="@string/adds_form"
         android:focusable="true"
         android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="@android:color/transparent"
+        app:backgroundTint="@color/wine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -27,12 +27,15 @@
         android:id="@+id/form_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="110dp"
         android:background="@android:color/transparent"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/test_view"
@@ -41,5 +44,13 @@
         app:layout_constraintBottom_toTopOf="@+id/form_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:layout_marginBottom="110dp"
+        android:background="@drawable/button_background"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
