@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
             }
             langSelectorBuilder.create().show()
         }
-
     }
     @RequiresApi(Build.VERSION_CODES.N)
     private fun setLocale(localeToSet: String) {
