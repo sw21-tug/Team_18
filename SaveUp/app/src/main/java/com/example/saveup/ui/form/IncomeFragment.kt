@@ -1,31 +1,21 @@
 package com.example.saveup.ui.form
 
-import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.saveup.FormActivity
 import com.example.saveup.R
-import java.lang.reflect.Method
 import java.nio.charset.Charset
-import java.text.SimpleDateFormat
-import java.util.*
+import kotlinx.android.synthetic.main.fragment_income.view.*
 
-/**
- * A placeholder fragment containing a simple view.
- */
+
 class IncomeFragment : Fragment() {
 
     private lateinit var pageViewModel: PageViewModel
@@ -47,11 +37,11 @@ class IncomeFragment : Fragment() {
 
         save_income.setOnClickListener{
             val type = "income"
-            val income_amount = root.findViewById<EditText>(R.id.euro_income).text.toString()
-            val date = root.findViewById<EditText>(R.id.date_input_field_income).text.toString()
-            val account = root.findViewById<EditText>(R.id.account_input_field_income).text.toString()
-            val category = root.findViewById<EditText>(R.id.category_input_field_income).text.toString()
-            val description = root.findViewById<EditText>(R.id.description_input_field_income).text.toString()
+            val income_amount = root.euro_income.text.toString()
+            val date = root.date_input_field_income.text.toString()
+            val account = root.account_input_field_income.text.toString()
+            val category = root.category_input_field_income.text.toString()
+            val description = root.description_input_field_income.text.toString()
 
             val queue = Volley.newRequestQueue(this.context)
             val url = "https://saveup.weisl.cc/userdata"
@@ -61,40 +51,38 @@ class IncomeFragment : Fragment() {
                               "&description=" + description
 
             val stringReq : StringRequest =
-                    object : StringRequest(Method.POST, url,
-                            Response.Listener { response ->
-                                // response
-                                val strResp = response.toString()
+                object : StringRequest(Method.POST, url,
+                    Response.Listener { response ->
+                        // response
+                        val strResp = response.toString()
 
-                                Log.d("API", strResp)
-                                Toast.makeText(this.context, "Income stored", Toast.LENGTH_SHORT).show()
-                            },
-                            Response.ErrorListener { error ->
-                                Log.d("API", "error => $error")
-                                Toast.makeText(this.context, "Storing failed", Toast.LENGTH_SHORT).show()
-                            }
-                    ){
-                        override fun getBody(): ByteArray {
-                            return requestBody.toByteArray(Charset.defaultCharset())
-                        }
+                        Log.d("API", strResp)
+                        Toast.makeText(this.context, "Income stored", Toast.LENGTH_SHORT).show()
+                    },
+                    Response.ErrorListener { error ->
+                        Log.d("API", "error => $error")
+                        Toast.makeText(this.context, "Storing failed", Toast.LENGTH_SHORT).show()
                     }
+                ){
+                    override fun getBody(): ByteArray {
+                        return requestBody.toByteArray(Charset.defaultCharset())
+                    }
+                }
             queue.add(stringReq)
+
+            root.euro_income.text.clear()
+            root.date_input_field_income.text.clear()
+            root.account_input_field_income.text.clear()
+            root.category_input_field_income.text.clear()
+            root.description_input_field_income.text.clear()
         }
 
         return root
     }
 
     companion object {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
         private const val ARG_SECTION_NUMBER = "section_number"
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         @JvmStatic
         fun newInstance(sectionNumber: Int): IncomeFragment {
             return IncomeFragment().apply {
