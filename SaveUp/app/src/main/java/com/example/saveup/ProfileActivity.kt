@@ -78,6 +78,10 @@ class ProfileActivity: AppCompatActivity() {
             e.printStackTrace()
         }
 
+        if (usersList.size == 0) {
+            no_expense_yet_text.visibility = View.VISIBLE
+        }
+
         form_list.layoutManager = LinearLayoutManager(this)
         val itemAdapter = ListAdapter(this, usersList)
         form_list.adapter = itemAdapter

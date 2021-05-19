@@ -32,6 +32,8 @@
 
     // profile activity
     <string name="adds_form">добавляет форму</string>
+    <string name="no_expense">Никаких расходов пока не производилось!</string>
+
 
     <string name="create_account">Зарегистрироваться</string>
     <string name="registration_button">регистр</string>

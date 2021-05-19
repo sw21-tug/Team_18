@@ -38,17 +38,20 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
-        android:id="@+id/test_view"
+        android:id="@+id/no_expense_yet_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/no_expense"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/form_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/shadow_bottom"
         android:layout_width="match_parent"
-        android:layout_height="90px"
+        android:layout_height="45dp"
         android:layout_marginBottom="110dp"
         android:background="@drawable/button_background"
         app:layout_constraintBottom_toBottomOf="parent" />
