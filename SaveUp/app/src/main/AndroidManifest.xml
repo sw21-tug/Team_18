@@ -24,17 +24,16 @@
         <activity
             android:name=".FormActivity"
             android:label="@string/title_activity_form_acitivity"
-            android:theme="@style/Theme.SaveUp.NoActionBar"></activity>
+            android:theme="@style/Theme.SaveUp.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ProfileActivity" android:theme="@style/Theme.SaveUp.NoActionBar"/>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".RegistrationActivity"/>
-        <activity android:name=".DashboardActivity"/>
     </application>
 
 </manifest>
