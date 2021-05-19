@@ -1,9 +1,11 @@
 package com.example.saveup
 
+import android.service.autofill.Validators.not
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -47,7 +49,7 @@ class ProfileActivityTest {
         getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
 
-        onView(withText("Income")).check(matches(isDisplayed()))
+        onView(withText(R.string.tab_text_1)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -55,7 +57,7 @@ class ProfileActivityTest {
         getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
 
-        onView(withText("Expense")).check(matches(isDisplayed()))
+        onView(withText(R.string.tab_text_2)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -74,7 +76,7 @@ class ProfileActivityTest {
     fun checkAllExpenseTextViewsAreDisplayed() {
         getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
-        onView(withText("Expense")).perform(click())
+        onView(withText(R.string.tab_text_2)).perform(click())
 
         onView(withId(R.id.euro_expense)).check(matches(isDisplayed()))
         onView(withId(R.id.date_input_field_expense)).check(matches(isDisplayed()))
@@ -92,6 +94,7 @@ class ProfileActivityTest {
         onView(withId(R.id.date_input_field_income)).perform(typeText("01.01.2020"))
         onView(withId(R.id.account_input_field_income)).perform(typeText("business"))
         onView(withId(R.id.category_input_field_income)).perform(typeText("computer"))
+            .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.description_input_field_income)).
             perform(typeText("monitor with keyboard"))
     }
@@ -100,12 +103,13 @@ class ProfileActivityTest {
     fun checkAllExpenseTextViewsAreWritable() {
         getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
-        onView(withText("Expense")).perform(click())
+        onView(withText(R.string.tab_text_2)).perform(click())
 
         onView(withId(R.id.euro_expense)).perform(typeText("1000"))
         onView(withId(R.id.date_input_field_expense)).perform(typeText("1.1.2020"))
         onView(withId(R.id.account_input_field_expense)).perform(typeText("business"))
         onView(withId(R.id.category_input_field_expense)).perform(typeText("computer"))
+            .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.description_input_field_expense)).
         perform(typeText("monitor with keyboard"))
     }
@@ -123,7 +127,7 @@ class ProfileActivityTest {
     fun checkIfSaveButtonIsDisplayedAndClickableInExpense() {
         getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
-        onView(withText("Expense")).perform(click())
+        onView(withText(R.string.tab_text_2)).perform(click())
 
         onView(withId(R.id.save_button_expense)).check(matches(isDisplayed()))
         onView(withId(R.id.save_button_expense)).check(matches(isClickable()))
@@ -198,4 +202,50 @@ class ProfileActivityTest {
         onView(withId(R.id.category_input_field_income)).check(matches(isDisplayed()))
         onView(withId(R.id.description_input_field_income)).check(matches(isDisplayed()))
     }
+
+    @Test
+    fun checkFormFieldResetIncome() {
+        getToProfilePage()
+        onView(withId(R.id.form_button)).perform(click())
+
+        onView(withId(R.id.euro_income)).perform(typeText("1000"))
+        onView(withId(R.id.date_input_field_income)).perform(typeText("01.01.2020"))
+        onView(withId(R.id.account_input_field_income)).perform(typeText("business"))
+        onView(withId(R.id.category_input_field_income)).perform(typeText("computer"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.description_input_field_income))
+            .perform(typeText("monitor with keyboard"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.save_button_income)).perform(click())
+        onView(withText("1000")).check(doesNotExist());
+        onView(withText("01.01.2020")).check(doesNotExist());
+        onView(withText("business")).check(doesNotExist());
+        onView(withText("computer")).check(doesNotExist());
+        onView(withText("monitor with keyboard")).check(doesNotExist());
+    }
+
+    @Test
+    fun checkFormFieldResetExpense() {
+        getToProfilePage()
+        onView(withId(R.id.form_button)).perform(click())
+        onView(withText(R.string.tab_text_2)).perform(click())
+
+        onView(withId(R.id.euro_expense)).perform(typeText("1000"))
+        onView(withId(R.id.date_input_field_expense)).perform(typeText("01.01.2020"))
+        onView(withId(R.id.account_input_field_expense)).perform(typeText("business"))
+        onView(withId(R.id.category_input_field_expense)).perform(typeText("computer"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.description_input_field_expense))
+            .perform(typeText("monitor with keyboard"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.save_button_expense)).perform(click())
+        onView(withText("1000")).check(doesNotExist());
+        onView(withText("01.01.2020")).check(doesNotExist());
+        onView(withText("business")).check(doesNotExist());
+        onView(withText("computer")).check(doesNotExist());
+        onView(withText("monitor with keyboard")).check(doesNotExist());
+    }
+
+
+
 }
