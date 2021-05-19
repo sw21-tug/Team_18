@@ -1,6 +1,5 @@
 package com.example.saveup
 
-import ListAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +20,9 @@ class ProfileActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE)
+        val tokenToGet: String = sharedPref.getString("user_token", "")!!
+        Log.d("TOKEN", tokenToGet)
 
         val fab: View = findViewById(R.id.form_button)
         fab.setOnClickListener {
