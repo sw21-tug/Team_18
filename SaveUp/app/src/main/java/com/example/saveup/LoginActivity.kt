@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import org.json.JSONArray
+import org.json.JSONObject
+import java.lang.Exception
 import java.nio.charset.Charset
 
 class LoginActivity : AppCompatActivity() {
@@ -28,29 +31,38 @@ class LoginActivity : AppCompatActivity() {
 
         val requestBody = "email=" + email + "&pw=" + password
         val stringReq : StringRequest =
-                object : StringRequest(Method.POST, url,
-                        Response.Listener { response ->
-                            // response
-                            val strResp = response.toString()
-                            //Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show()
+            object : StringRequest(Method.POST, url,
+                Response.Listener { response ->
+                    // response
+                    val strResp = response.toString()
+                    //Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show()
 
-                            Log.d("token", strResp)
-
-                            val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE).edit()
-                            sharedPref.putString("user_token", strResp)
-                            sharedPref.apply()
-                            val intent = Intent (this, ProfileActivity::class.java)
-                            startActivity(intent)
-                        },
-                        Response.ErrorListener { error ->
-                            Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
-                            Log.d("token", "error => $error")
-                        }
-                ){
-                    override fun getBody(): ByteArray {
-                        return requestBody.toByteArray(Charset.defaultCharset())
+                    try {
+                        val jsonArray = JSONArray(strResp)
+                        Log.d("token", jsonArray[0].toString())
+                        val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE).edit()
+                        sharedPref.putString("user_token", jsonArray[0].toString())
+                        sharedPref.putString("user_prename", jsonArray[0].toString())
+                        sharedPref.putString("user_surname", jsonArray[0].toString())
+                        sharedPref.putString("user_mail", email)
+                        sharedPref.apply()
+                        val intent = Intent (this, ProfileActivity::class.java)
+                        startActivity(intent)
                     }
+                    catch (e: Exception)
+                    {
+                        print(e)
+                    }
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
+                    Log.d("token", "error => $error")
                 }
+            ){
+                override fun getBody(): ByteArray {
+                    return requestBody.toByteArray(Charset.defaultCharset())
+                }
+            }
         queue.add(stringReq)
 
     }

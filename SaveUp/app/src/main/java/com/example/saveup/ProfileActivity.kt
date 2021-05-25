@@ -14,11 +14,12 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.saveup.ui.form.FormData
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.content_profile.*
+import kotlinx.android.synthetic.main.navigation_header.*
 import org.json.JSONArray
 import org.json.JSONException
+import java.lang.NullPointerException
 
 class ProfileActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,17 +35,34 @@ class ProfileActivity: AppCompatActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+        // create listener for the form_button
         val fab: View = findViewById(R.id.form_button)
         fab.setOnClickListener {
             val intent = Intent (this, FormActivity::class.java)
             startActivity(intent)
         }
-        getExpensesFromDatabase()
 
+        // get and display all the data for the user from the database
+        getExpensesFromDatabase()
         val usersList: ArrayList<FormData> = ArrayList()
         form_list.layoutManager = LinearLayoutManager(this)
         val itemAdapter = ListAdapter(this, usersList)
         form_list.adapter = itemAdapter
+
+        // set user info for drawer
+        try {
+            val name: String = sharedPref.getString("user_prename", " ")+
+                    " " + sharedPref.getString("user_surname", " ")
+            val mail: String = sharedPref.getString("user_mail", " ")!!
+            Log.d("drawer_name: ", name)
+            drawer_name.text = name
+            drawer_mail.text = mail
+            Log.d("drawer_mail: ", mail)
+        }
+        catch(e: NullPointerException)
+        {
+            print(e)
+        }
     }
 
     override fun onResume() {
