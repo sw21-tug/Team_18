@@ -5,15 +5,18 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.saveup.ui.form.FormData
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.content_profile.*
 import kotlinx.android.synthetic.main.navigation_header.*
@@ -21,7 +24,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import java.lang.NullPointerException
 
-class ProfileActivity: AppCompatActivity() {
+class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -63,6 +66,8 @@ class ProfileActivity: AppCompatActivity() {
         {
             print(e)
         }
+
+        setNavigationViewListener()
     }
 
     override fun onResume() {
@@ -124,5 +129,26 @@ class ProfileActivity: AppCompatActivity() {
         form_list.layoutManager = LinearLayoutManager(this)
         val itemAdapter = ListAdapter(this, usersList)
         form_list.adapter = itemAdapter
+    }
+
+
+    // DRAWER CONTENT
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.navigation_home -> {
+                val intent = Intent (this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.navigation_else -> println("Create another activity")
+            else -> println("This button isn't implemented yet")
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true;
+    }
+
+    fun setNavigationViewListener() {
+        nav_menu.setNavigationItemSelectedListener(this)
     }
 }

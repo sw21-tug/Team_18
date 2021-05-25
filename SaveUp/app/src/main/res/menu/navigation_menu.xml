@@ -2,7 +2,13 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Home" />
-    <item android:title="Something" />
-    <item android:title="Else" />
+    <item
+        android:id="@+id/navigation_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/navigation_something"
+        android:title="Something" />
+    <item
+        android:id="@+id/navigation_else"
+        android:title="Else" />
 </menu>
