@@ -11,6 +11,8 @@
     <string name="welcome_back">歡迎回來！</string>
     <string name="logo">商標</string>
     <string name="title_activity_form_acitivity">表格活動</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 
     // form list
     <string name="list_text_id">ID : </string>
