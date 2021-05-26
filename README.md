@@ -16,7 +16,7 @@ For many people, the idea of logging every transaction into a personal budget so
 | Role             | Name                  | 
 | :---             |    :----:             |
 | **Product Owner**|   Müge Yerli      |
-| **Scrum Master** |   Gillsu George Thekkekara Puthenparampil |
+| **Scrum Master** | Gillsu George Thekkekara Puthenparampil |
 | **Developer**    | Daniel Fürpaß          |
 | **Developer**    | Nico Alois Kaschowitz    |
 | **Developer**    | Kilian Weisl               |
@@ -30,30 +30,49 @@ For many people, the idea of logging every transaction into a personal budget so
 ### Schedule
 | :heavy_check_mark: **24 March 2021** | **Team bonding period**  |
 | :---             |    :----:             |
-| :heavy_check_mark: **14 April 2021**  | **Sprint 1** |
-| :heavy_check_mark: **21 April 2021**  | **Sprint 1** |
+| :heavy_check_mark: **14 April 2021**  | Sprint 1 |
+| :heavy_check_mark: **21 April 2021**  | Sprint 1 |
 | :heavy_check_mark: **28 April 2021**  | Sprint 2 |
 | :heavy_check_mark: **05 May 2021**  | Sprint 2 (1 Release, 23:59) |
-| **12 May 2021**  | Sprint 3 |
-| **19 May 2021**  | Sprint 3 |
+| :heavy_check_mark: **12 May 2021**  | Sprint 3 |
+| :heavy_check_mark: **19 May 2021**  | Sprint 3 |
 | **26 May 2021**  | Sprint 4 |
-| **02 May 2021**  | Sprint 4 |
-| **09 May 2021**  | Sprint 4 (2 Release, 23:59)  |
+| **02 June 2021**  | Sprint 4 |
+| **09 June 2021**  | Sprint 4 (2 Release, 23:59)  |
 
 
 
 ### Implemented Features
 
-:heavy_check_mark: **SAUP-01** Create Database 
+#### Sprint1: 
 
-:heavy_check_mark: **SAUP-02** Initialize PHP-Backend 
+:heavy_check_mark: **[SAUP-01]** Create Database 
 
-:heavy_check_mark: **SAUP-03** Initialize project
+:heavy_check_mark: **[SAUP-02]** Initialize PHP-Backend 
 
-:heavy_check_mark: **SAUP-04** Designing Logo
+:heavy_check_mark: **[SAUP-03]** Initialize project
 
-:heavy_check_mark: **SAUP-05** Include logo in project
+:heavy_check_mark: **[SAUP-04]** Designing Logo
 
-:heavy_check_mark: **SAUP-08** Include user login
+:heavy_check_mark: **[SAUP-05]** Include logo in project
 
-:heavy_check_mark: **SAUP-14** Create home page
+:heavy_check_mark: **[SAUP-08]** Include user login
+
+
+#### Sprint2: 
+
+:heavy_check_mark: **[SAUP-07]** Create new Account
+
+:heavy_check_mark: **[SAUP-09]** Add New Expenses
+
+:heavy_check_mark: **[SAUP-15]** i18n Support
+
+:heavy_check_mark: **[SAUP-14]** Create homepage 
+
+:heavy_check_mark: **[SAUP-16]** Internationalize existing views 
+
+:heavy_check_mark: **[SAUP-19]** Install password encryption 
+
+:heavy_check_mark: **[SAUP-22]** Include logo on login page 
+
+

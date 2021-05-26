@@ -12,6 +12,13 @@
     <string name="logo">logo</string>
     <string name="title_activity_form_acitivity">FormAcitivity</string>
 
+    // form list
+    <string name="list_text_id">ID : </string>
+    <string name="list_text_type">Type : </string>
+    <string name="list_text_date">Date : </string>
+    <string name="list_text_description">Description : </string>
+    <string name="list_text_amount">Amount : </string>
+
     // form activity
     <string name="tab_text_1">Income</string>
     <string name="tab_text_2">Expense</string>
@@ -21,10 +28,11 @@
     <string name="text_category">Category</string>
     <string name="text_description">Description</string>
     <string name="save_button">Save</string>
-    <string name="date_placeholder">01.01.2020</string>
+    <string name="date_placeholder">TT.MM.JJJJ</string>
 
     // profile activity
     <string name="adds_form">adds form</string>
+    <string name="no_expense">No expenses have been made yet!</string>
 
     <string name="create_account">Create Account</string>
     <string name="registration_button">Register</string>
