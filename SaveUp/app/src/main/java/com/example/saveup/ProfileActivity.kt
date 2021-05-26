@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -19,10 +20,9 @@ import com.example.saveup.ui.form.FormData
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.content_profile.*
-import kotlinx.android.synthetic.main.navigation_header.*
 import org.json.JSONArray
 import org.json.JSONException
-import java.lang.NullPointerException
+
 
 class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,19 +53,14 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
         form_list.adapter = itemAdapter
 
         // set user info for drawer
-        try {
-            val name: String = sharedPref.getString("user_prename", " ")+
-                    " " + sharedPref.getString("user_surname", " ")
-            val mail: String = sharedPref.getString("user_mail", " ")!!
-            Log.d("drawer_name: ", name)
-            drawer_name.text = name
-            drawer_mail.text = mail
-            Log.d("drawer_mail: ", mail)
-        }
-        catch(e: NullPointerException)
-        {
-            print(e)
-        }
+
+        val name: String = sharedPref.getString("user_prename", " ")+
+                " " + sharedPref.getString("user_surname", " ")
+        val mail: String = sharedPref.getString("user_mail", " ")!!
+        Log.d("drawer_name: ", name)
+        nav_menu.getHeaderView(0).findViewById<TextView>(R.id.drawer_name).text = name
+        nav_menu.getHeaderView(0).findViewById<TextView>(R.id.drawer_mail).text = mail
+        Log.d("drawer_mail: ", mail)
 
         setNavigationViewListener()
     }
@@ -137,7 +132,7 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         when (item.itemId) {
             R.id.navigation_home -> {
-                val intent = Intent (this, MainActivity::class.java)
+                val intent = Intent (this, ProfileActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_else -> println("Create another activity")
