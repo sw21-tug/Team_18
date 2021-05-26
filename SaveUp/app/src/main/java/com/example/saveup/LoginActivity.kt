@@ -39,11 +39,11 @@ class LoginActivity : AppCompatActivity() {
 
                     try {
                         val jsonArray = JSONArray(strResp)
-                        Log.d("token", jsonArray[0].toString())
+                        Log.d("token", strResp)
                         val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE).edit()
                         sharedPref.putString("user_token", jsonArray[0].toString())
-                        sharedPref.putString("user_prename", jsonArray[0].toString())
-                        sharedPref.putString("user_surname", jsonArray[0].toString())
+                        sharedPref.putString("user_prename", jsonArray[1].toString())
+                        sharedPref.putString("user_surname", jsonArray[2].toString())
                         sharedPref.putString("user_mail", email)
                         sharedPref.apply()
                         val intent = Intent (this, ProfileActivity::class.java)
