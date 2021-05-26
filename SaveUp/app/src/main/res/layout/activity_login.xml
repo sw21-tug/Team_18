@@ -43,7 +43,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password_text"
-            android:text="root"
             />
 
         <EditText
@@ -55,7 +54,6 @@
             app:layout_constraintBottom_toTopOf="@id/password_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/email_text"
-            android:text="root@root.at"
             />
 
         <!---android:text="root@root.at"-->
