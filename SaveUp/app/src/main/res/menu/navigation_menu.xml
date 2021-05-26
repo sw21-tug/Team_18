@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+<menu
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/navigation_home"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
-        android:id="@+id/navigation_something"
-        android:title="Something" />
-    <item
-        android:id="@+id/navigation_else"
-        android:title="Else" />
+        android:id="@+id/navigation_logout"
+        android:title="@string/logout" />
 </menu>
