@@ -20,6 +20,14 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE)
+        if(sharedPref.getString("user_token", null) != null)
+        {
+            val intent = Intent (this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     fun login(view: View) {

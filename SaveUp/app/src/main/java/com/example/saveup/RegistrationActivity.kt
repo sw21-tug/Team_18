@@ -1,5 +1,6 @@
 package com.example.saveup
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -17,6 +18,13 @@ class RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
+
+        val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE)
+        if(sharedPref.getString("user_token", null) != null)
+        {
+            val intent = Intent (this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun String.isEmailValid(): Boolean {

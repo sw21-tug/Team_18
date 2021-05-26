@@ -18,6 +18,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE)
+        if(sharedPref.getString("user_token", null) != null)
+        {
+            val intent = Intent (this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         loadLocale()
 
         val changeLangButton: Button = findViewById(R.id.buttonChangeLang)
