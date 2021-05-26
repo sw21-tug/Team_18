@@ -1,6 +1,8 @@
 package com.example.saveup
 
+import android.content.Context
 import android.service.autofill.Validators.not
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
@@ -24,6 +26,7 @@ class ProfileActivityTest {
             ActivityScenarioRule(MainActivity::class.java)
 
     private fun getToProfilePage() {
+        getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
         onView(withId(R.id.login_password)).perform(typeText("root")).
