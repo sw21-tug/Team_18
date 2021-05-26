@@ -40,4 +40,9 @@
     <string name="registration_prename">First Name</string>
     <string name="registration_lastname">Name</string>
     <string name="change_lang">Change language</string>
+
+// drawer menu
+    <string name="logout">Logout</string>
+    <string name="home">Home</string>
+
 </resources>
