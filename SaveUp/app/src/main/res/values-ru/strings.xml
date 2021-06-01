@@ -11,6 +11,8 @@
     <string name="welcome_back">Добро пожаловать обратно!</string>
     <string name="logo">логотип</string>
     <string name="title_activity_form_acitivity">ФормаАктивность</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 
     // form list
     <string name="list_text_id">я бы : </string>

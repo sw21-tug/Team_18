@@ -17,10 +17,10 @@ For many people, the idea of logging every transaction into a personal budget so
 | :---             |    :----:             |
 | **Product Owner**|   Müge Yerli      |
 | **Scrum Master** | Gillsu George Thekkekara Puthenparampil |
+| **Senior Developer**    | Jakob Tropper          |
 | **Developer**    | Daniel Fürpaß          |
 | **Developer**    | Nico Alois Kaschowitz    |
 | **Developer**    | Kilian Weisl               |
-| **Developer**    | Jakob Tropper          |
 | **Developer**    | Erwin Wagner        |
 | **Developer**    | Christian Weber         |
 
