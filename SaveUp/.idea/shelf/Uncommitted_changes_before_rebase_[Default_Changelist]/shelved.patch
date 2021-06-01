@@ -1,0 +1,17 @@
+Index: app/src/main/res/layout/navigation_header.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"200dp\"\n    android:background=\"?attr/colorPrimaryVariant\">\n\n    <TextView\n        android:id=\"@+id/drawer_mail\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginLeft=\"16dp\"\n        android:layout_marginBottom=\"16dp\"\n        android:text=\"@string/login_email\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintLeft_toLeftOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/drawer_name\" />\n\n    <TextView\n        android:id=\"@+id/drawer_name\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginLeft=\"16dp\"\n        android:layout_marginTop=\"32dp\"\n        android:text=\"@string/registration_prename\"\n        app:layout_constraintBottom_toTopOf=\"@id/drawer_mail\"\n        app:layout_constraintLeft_toLeftOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/drawer_logo\" />\n\n    <ImageView\n        android:id=\"@+id/drawer_logo\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginLeft=\"28dp\"\n        android:layout_marginTop=\"24dp\"\n        app:layout_constraintBottom_toTopOf=\"@id/drawer_name\"\n        app:layout_constraintLeft_toLeftOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\"\n        app:srcCompat=\"@mipmap/ic_launcher_round\" />\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/navigation_header.xml	(revision fc30c7203ed34f8df7ac68c161ab798ee6614417)
++++ app/src/main/res/layout/navigation_header.xml	(date 1622011328473)
+@@ -23,7 +23,6 @@
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="16dp"
+         android:layout_marginTop="32dp"
+-        android:text="@string/registration_prename"
+         app:layout_constraintBottom_toTopOf="@id/drawer_mail"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/drawer_logo" />

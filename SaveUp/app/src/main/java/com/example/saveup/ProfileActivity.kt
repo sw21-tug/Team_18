@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -17,6 +18,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.saveup.ui.form.FormData
+import com.example.saveup.ui.form.SortSpinner
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.content_profile.*
@@ -47,13 +49,8 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         // get and display all the data for the user from the database
         getExpensesFromDatabase()
-        val usersList: ArrayList<FormData> = ArrayList()
-        form_list.layoutManager = LinearLayoutManager(this)
-        val itemAdapter = ListAdapter(this, usersList)
-        form_list.adapter = itemAdapter
 
         // set user info for drawer
-
         val name: String = sharedPref.getString("user_prename", " ")+
                 " " + sharedPref.getString("user_surname", " ")
         val mail: String = sharedPref.getString("user_mail", " ")!!
@@ -63,6 +60,16 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
         Log.d("drawer_mail: ", mail)
 
         setNavigationViewListener()
+
+        // set the spinner
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.spinner_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            sort_spinner.adapter = adapter
+        }
     }
 
     override fun onResume() {
@@ -107,7 +114,11 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val type = user.getString("type")
                 val date = user.getString("date")
                 val description = user.getString("description")
-                val amount = user.getString("amount")
+                val amount: Int
+                if (type == "expense")
+                    amount = user.getInt("amount").unaryMinus()
+                else
+                    amount = user.getInt("amount")
 
                 val formDetails = FormData(id, type, date, description, amount)
 
@@ -124,6 +135,10 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
         form_list.layoutManager = LinearLayoutManager(this)
         val itemAdapter = ListAdapter(this, usersList)
         form_list.adapter = itemAdapter
+
+        // set spinner
+        val spinner = SortSpinner(itemAdapter, this)
+        sort_spinner.onItemSelectedListener = spinner
     }
 
 
@@ -145,5 +160,10 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     fun setNavigationViewListener() {
         nav_menu.setNavigationItemSelectedListener(this)
+    }
+
+
+    companion object {
+        var sortListBy: String = ""
     }
 }
