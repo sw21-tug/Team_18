@@ -20,14 +20,16 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ProfileActivityTest {
 
-    @Rule @JvmField var activityRule: ActivityScenarioRule<MainActivity> =
-            ActivityScenarioRule(MainActivity::class.java)
+    @Rule
+    @JvmField
+    var activityRule: ActivityScenarioRule<MainActivity> =
+        ActivityScenarioRule(MainActivity::class.java)
 
     private fun getToProfilePage() {
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.login_password)).perform(typeText("root")).
-        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_password)).perform(typeText("root"))
+            .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
     }
 
@@ -94,8 +96,7 @@ class ProfileActivityTest {
         onView(withId(R.id.account_input_field_income)).perform(typeText("business"))
         onView(withId(R.id.category_input_field_income)).perform(typeText("computer"))
             .perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.description_input_field_income)).
-            perform(typeText("monitor with keyboard"))
+        onView(withId(R.id.description_input_field_income)).perform(typeText("monitor with keyboard"))
     }
 
     @Test
@@ -109,8 +110,7 @@ class ProfileActivityTest {
         onView(withId(R.id.account_input_field_expense)).perform(typeText("business"))
         onView(withId(R.id.category_input_field_expense)).perform(typeText("computer"))
             .perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.description_input_field_expense)).
-        perform(typeText("monitor with keyboard"))
+        onView(withId(R.id.description_input_field_expense)).perform(typeText("monitor with keyboard"))
     }
 
     @Test
@@ -146,8 +146,8 @@ class ProfileActivityTest {
         onView(withText("English")).perform(click())
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.login_password)).perform(typeText("root")).
-        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_password)).perform(typeText("root"))
+            .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
 
@@ -167,8 +167,8 @@ class ProfileActivityTest {
         onView(withText("Russian")).perform(click())
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.login_password)).perform(typeText("root")).
-        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_password)).perform(typeText("root"))
+            .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
 
@@ -188,8 +188,8 @@ class ProfileActivityTest {
         onView(withText("Chinese")).perform(click())
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.login_password)).perform(typeText("root")).
-        perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.login_password)).perform(typeText("root"))
+            .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
 
@@ -243,5 +243,11 @@ class ProfileActivityTest {
         onView(withText("business")).check(doesNotExist());
         onView(withText("computer")).check(doesNotExist());
         onView(withText("monitor with keyboard")).check(doesNotExist());
+    }
+
+    @Test
+    fun checkFilter() {
+        getToProfilePage()
+        onView(withId(R.id.profile_content)).perform(click())
     }
 }
