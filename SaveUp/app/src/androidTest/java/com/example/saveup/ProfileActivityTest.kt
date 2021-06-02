@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
@@ -41,6 +42,7 @@ class ProfileActivityTest {
             perform(ViewActions.closeSoftKeyboard())
             onView(withId(R.id.login_button)).perform(click())
         }
+        sleep(500) // due to login delay
         //getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
     }
 
@@ -55,7 +57,6 @@ class ProfileActivityTest {
 
     @Test
     fun checkLogout() {
-        sleep(500) // due to login delay
         onView(withId(R.id.drawerLayout)).perform(DrawerActions.open());
         onView(withId(R.id.navigation_logout)).perform(click());
         onView(withId(R.id.Log_In)).check(matches(isDisplayed()))
@@ -77,12 +78,14 @@ class ProfileActivityTest {
         onView(withId(R.id.form_button)).perform(click())
 
         onView(withText(R.string.tab_text_1)).check(matches(isDisplayed()))
+        Espresso.pressBack()
     }
 
     @Test
     fun checkExpenseButton() {
         onView(withId(R.id.form_button)).perform(click())
         onView(withText(R.string.tab_text_2)).check(matches(isDisplayed()))
+        Espresso.pressBack()
     }
 
     @Test
@@ -94,6 +97,7 @@ class ProfileActivityTest {
         onView(withId(R.id.account_input_field_income)).check(matches(isDisplayed()))
         onView(withId(R.id.category_input_field_income)).check(matches(isDisplayed()))
         onView(withId(R.id.description_input_field_income)).check(matches(isDisplayed()))
+        Espresso.pressBack()
     }
 
     @Test
@@ -106,6 +110,7 @@ class ProfileActivityTest {
         onView(withId(R.id.account_input_field_expense)).check(matches(isDisplayed()))
         onView(withId(R.id.category_input_field_expense)).check(matches(isDisplayed()))
         onView(withId(R.id.description_input_field_expense)).check(matches(isDisplayed()))
+        Espresso.pressBack()
     }
 
     @Test
@@ -119,6 +124,7 @@ class ProfileActivityTest {
             .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.description_input_field_income)).
             perform(typeText("monitor with keyboard"))
+        Espresso.pressBack()
     }
 
     @Test
@@ -133,6 +139,7 @@ class ProfileActivityTest {
             .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.description_input_field_expense)).
         perform(typeText("monitor with keyboard"))
+        Espresso.pressBack()
     }
 
     @Test
@@ -141,6 +148,7 @@ class ProfileActivityTest {
 
         onView(withId(R.id.save_button_income)).check(matches(isDisplayed()))
         onView(withId(R.id.save_button_income)).check(matches(isClickable()))
+        Espresso.pressBack()
     }
 
     @Test
@@ -150,6 +158,7 @@ class ProfileActivityTest {
 
         onView(withId(R.id.save_button_expense)).check(matches(isDisplayed()))
         onView(withId(R.id.save_button_expense)).check(matches(isClickable()))
+        Espresso.pressBack()
     }
 
     @Test
@@ -175,6 +184,7 @@ class ProfileActivityTest {
         onView(withText("business")).check(doesNotExist());
         onView(withText("computer")).check(doesNotExist());
         onView(withText("monitor with keyboard")).check(doesNotExist());
+        Espresso.pressBack()
     }
 
     @Test
@@ -196,6 +206,7 @@ class ProfileActivityTest {
         onView(withText("business")).check(doesNotExist());
         onView(withText("computer")).check(doesNotExist());
         onView(withText("monitor with keyboard")).check(doesNotExist());
+        Espresso.pressBack()
     }
 
 
