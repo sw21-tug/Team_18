@@ -1,6 +1,7 @@
 package com.example.saveup
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
@@ -14,6 +15,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
@@ -27,40 +29,36 @@ class ProfileActivityTest {
     @get:Rule var activityRule: ActivityScenarioRule<MainActivity> =
         ActivityScenarioRule(MainActivity::class.java)
 
-    @Before
-    fun setUp()
+    @Before fun setUp()
     {
-        getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
-        val scenario = activityRule.scenario
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("English")).perform(click())
+        if(getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).getString("user_token", null) == null)
+        {
+            onView(withId(R.id.Log_In)).perform(click())
+            onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
+            onView(withId(R.id.login_password)).perform(typeText("root")).
+            perform(ViewActions.closeSoftKeyboard())
+            onView(withId(R.id.login_button)).perform(click())
+        }
+        //getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
     }
 
-    private fun getToProfilePage() {
-        getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
-        onView(withId(R.id.Log_In)).perform(click())
-        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.login_password)).perform(typeText("root")).
-        perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.form_list)).check(matches(isDisplayed()))
+    @After fun tearDown()
+    {
+
     }
 
     @Test
     fun checkFormButtonIsDisplayed() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).check(matches(isDisplayed()))
     }
 
     @Test
     fun checkAFormButtonIsClickable() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).check(matches(isClickable()))
     }
 
     @Test
     fun checkIncomeButton() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
 
         onView(withText(R.string.tab_text_1)).check(matches(isDisplayed()))
@@ -68,15 +66,12 @@ class ProfileActivityTest {
 
     @Test
     fun checkExpenseButton() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
-
         onView(withText(R.string.tab_text_2)).check(matches(isDisplayed()))
     }
 
     @Test
     fun checkAllIncomeTextViewsAreDisplayed() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
 
         onView(withId(R.id.euro_income)).check(matches(isDisplayed()))
@@ -88,7 +83,6 @@ class ProfileActivityTest {
 
     @Test
     fun checkAllExpenseTextViewsAreDisplayed() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
         onView(withText(R.string.tab_text_2)).perform(click())
 
@@ -101,7 +95,6 @@ class ProfileActivityTest {
 
     @Test
     fun checkAllIncomeTextViewsAreWritable() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
 
         onView(withId(R.id.euro_income)).perform(typeText("1000"))
@@ -115,7 +108,6 @@ class ProfileActivityTest {
 
     @Test
     fun checkAllExpenseTextViewsAreWritable() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
         onView(withText(R.string.tab_text_2)).perform(click())
 
@@ -130,7 +122,6 @@ class ProfileActivityTest {
 
     @Test
     fun checkIfSaveButtonIsDisplayedAndClickableInIncome() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
 
         onView(withId(R.id.save_button_income)).check(matches(isDisplayed()))
@@ -139,7 +130,6 @@ class ProfileActivityTest {
 
     @Test
     fun checkIfSaveButtonIsDisplayedAndClickableInExpense() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
         onView(withText(R.string.tab_text_2)).perform(click())
 
@@ -149,7 +139,6 @@ class ProfileActivityTest {
 
     @Test
     fun checkTableHeaderIsDisplayed() {
-        getToProfilePage()
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
 
     }
@@ -219,7 +208,6 @@ class ProfileActivityTest {
 
     @Test
     fun checkFormFieldResetIncome() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
 
         onView(withId(R.id.euro_income)).perform(typeText("1000"))
@@ -240,7 +228,6 @@ class ProfileActivityTest {
 
     @Test
     fun checkFormFieldResetExpense() {
-        getToProfilePage()
         onView(withId(R.id.form_button)).perform(click())
         onView(withText(R.string.tab_text_2)).perform(click())
 
