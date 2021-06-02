@@ -46,7 +46,11 @@ class ProfileActivityTest {
 
     @After fun tearDown()
     {
-
+        if(getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).getString("user_token", null) != null)
+        {
+            onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+            onView(withId(R.id.navigation_logout)).perform(click())
+        }
     }
 
     @Test
