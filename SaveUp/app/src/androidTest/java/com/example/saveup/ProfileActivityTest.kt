@@ -1,7 +1,9 @@
 package com.example.saveup
 
 import android.content.Context
-import android.service.autofill.Validators.not
+import android.util.Log
+import androidx.lifecycle.Lifecycle
+import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
@@ -9,21 +11,30 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.junit.Test
-
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
+
 
 @RunWith(AndroidJUnit4::class)
 class ProfileActivityTest {
 
-    @Rule @JvmField var activityRule: ActivityScenarioRule<MainActivity> =
-            ActivityScenarioRule(MainActivity::class.java)
+    @get:Rule var activityRule: ActivityScenarioRule<MainActivity> =
+        ActivityScenarioRule(MainActivity::class.java)
+
+    @Before
+    fun setUp()
+    {
+        getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
+        val scenario = activityRule.scenario
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("English")).perform(click())
+    }
 
     private fun getToProfilePage() {
         getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
