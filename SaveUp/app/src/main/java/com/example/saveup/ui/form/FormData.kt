@@ -12,10 +12,10 @@ class FormData (
     ) : Comparable<Any> {
     override fun compareTo(other: Any): Int {
         when (sortListBy){
-            "description_ascending" -> return sortByDescription(other)
-            "description_descending" -> return sortByDescription(other)
-            "amount_ascending" -> return sortByAmount(other)
-            "amount_descending" -> return sortByAmount(other)
+            "Description Ascending" -> return sortByDescription(other)
+            "Description Descending" -> return sortByDescription(other)
+            "Amount Ascending" -> return sortByAmount(other)
+            "Amount Descending" -> return sortByAmount(other)
         }
         return 0
     }
