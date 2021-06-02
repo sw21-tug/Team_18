@@ -12,6 +12,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.DrawerActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -21,6 +22,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.lang.Thread.sleep
 
 
 @RunWith(AndroidJUnit4::class)
@@ -45,6 +47,15 @@ class ProfileActivityTest {
     @After fun tearDown()
     {
 
+    }
+
+    @Test
+    fun checkLogout() {
+        sleep(500) // due to login delay
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open());
+        onView(withId(R.id.navigation_logout)).perform(click());
+        onView(withId(R.id.Log_In)).check(matches(isDisplayed()))
+        assertNull(getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).getString("user_token", null))
     }
 
     @Test
@@ -140,7 +151,6 @@ class ProfileActivityTest {
     @Test
     fun checkTableHeaderIsDisplayed() {
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
-
     }
 
     @Test
