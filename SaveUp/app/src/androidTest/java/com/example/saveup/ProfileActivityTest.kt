@@ -29,7 +29,6 @@ class ProfileActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
-        onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -245,7 +244,4 @@ class ProfileActivityTest {
         onView(withText("computer")).check(doesNotExist());
         onView(withText("monitor with keyboard")).check(doesNotExist());
     }
-
-
-
 }

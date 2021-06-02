@@ -14,6 +14,7 @@ class SortSpinner(private val listAdapter: ListAdapter, val context: Context) : 
 
         try {
             when (parent.getItemAtPosition(pos)) {
+
                 "Description Ascending" -> {
                     sortListBy = "Description Ascending"
                     listAdapter.items.sort()
@@ -31,6 +32,28 @@ class SortSpinner(private val listAdapter: ListAdapter, val context: Context) : 
                     listAdapter.notifyDataSetChanged()
                 }
                 "Amount Descending" -> {
+                    sortListBy = "Amount Descending"
+                    listAdapter.items.sort()
+                    listAdapter.items.reverse()
+                    listAdapter.notifyDataSetChanged()
+                }
+                "Описание По возрастанию" -> {
+                    sortListBy = "Description Ascending"
+                    listAdapter.items.sort()
+                    listAdapter.notifyDataSetChanged()
+                }
+                "Описание По убыванию" -> {
+                    sortListBy = "Description Descending"
+                    listAdapter.items.sort()
+                    listAdapter.items.reverse()
+                    listAdapter.notifyDataSetChanged()
+                }
+                "Сумма по возрастанию" -> {
+                    sortListBy = "Amount Ascending"
+                    listAdapter.items.sort()
+                    listAdapter.notifyDataSetChanged()
+                }
+                "Сумма по убыванию" -> {
                     sortListBy = "Amount Descending"
                     listAdapter.items.sort()
                     listAdapter.items.reverse()

@@ -40,7 +40,10 @@
         <item>Amount Ascending</item>
         <item>Amount Descending</item>
     </string-array>
-
+    <string name="description_ascending">Description Ascending</string>
+    <string name="description_descending">Description Descending</string>
+    <string name="amount_ascending">Amount Ascending</string>
+    <string name="amount_descending">Amount Descending</string>
 
     <string name="create_account">Create Account</string>
     <string name="registration_button">Register</string>

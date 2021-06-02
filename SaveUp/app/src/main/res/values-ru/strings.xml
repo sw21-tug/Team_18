@@ -35,7 +35,16 @@
     // profile activity
     <string name="adds_form">добавляет форму</string>
     <string name="no_expense">Никаких расходов пока не производилось!</string>
-
+    <string-array name="spinner_array">
+        <item>Описание По возрастанию</item>
+        <item>Описание По убыванию</item>
+        <item>Сумма по возрастанию</item>
+        <item>Сумма по убыванию</item>
+    </string-array>
+    <string name="description_ascending">Описание По возрастанию</string>
+    <string name="description_descending">Описание По убыванию</string>
+    <string name="amount_ascending">Сумма по возрастанию</string>
+    <string name="amount_descending">Сумма по убыванию</string>
 
     <string name="create_account">Зарегистрироваться</string>
     <string name="registration_button">регистр</string>
