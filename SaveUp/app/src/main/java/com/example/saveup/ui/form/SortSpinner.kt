@@ -14,24 +14,24 @@ class SortSpinner(private val listAdapter: ListAdapter, val context: Context) : 
 
         try {
             when (parent.getItemAtPosition(pos)) {
-                "description_ascending" -> {
-                    sortListBy = "description_ascending"
+                "Description Ascending" -> {
+                    sortListBy = "Description Ascending"
                     listAdapter.items.sort()
                     listAdapter.notifyDataSetChanged()
                 }
-                "description_descending" -> {
-                    sortListBy = "description_descending"
+                "Description Descending" -> {
+                    sortListBy = "Description Descending"
                     listAdapter.items.sort()
                     listAdapter.items.reverse()
                     listAdapter.notifyDataSetChanged()
                 }
-                "amount_ascending" -> {
-                    sortListBy = "amount_ascending"
+                "Amount Ascending" -> {
+                    sortListBy = "Amount Ascending"
                     listAdapter.items.sort()
                     listAdapter.notifyDataSetChanged()
                 }
-                "amount_descending" -> {
-                    sortListBy = "amount_descending"
+                "Amount Descending" -> {
+                    sortListBy = "Amount Descending"
                     listAdapter.items.sort()
                     listAdapter.items.reverse()
                     listAdapter.notifyDataSetChanged()
