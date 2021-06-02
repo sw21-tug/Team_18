@@ -59,6 +59,28 @@ class SortSpinner(private val listAdapter: ListAdapter, val context: Context) : 
                     listAdapter.items.reverse()
                     listAdapter.notifyDataSetChanged()
                 }
+                "說明 升序" -> {
+                    sortListBy = "Description Ascending"
+                    listAdapter.items.sort()
+                    listAdapter.notifyDataSetChanged()
+                }
+                "描述 降序" -> {
+                    sortListBy = "Description Descending"
+                    listAdapter.items.sort()
+                    listAdapter.items.reverse()
+                    listAdapter.notifyDataSetChanged()
+                }
+                "金額遞增" -> {
+                    sortListBy = "Amount Ascending"
+                    listAdapter.items.sort()
+                    listAdapter.notifyDataSetChanged()
+                }
+                "金額遞減" -> {
+                    sortListBy = "Amount Descending"
+                    listAdapter.items.sort()
+                    listAdapter.items.reverse()
+                    listAdapter.notifyDataSetChanged()
+                }
             }
         }
         catch (e: Exception)
