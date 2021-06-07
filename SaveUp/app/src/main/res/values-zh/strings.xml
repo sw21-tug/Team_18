@@ -36,6 +36,7 @@
     <string name="adds_form">添加表格</string>
     <string name="no_expense">尚未支出任何費用！</string>
     <string-array name="spinner_array">
+        <item>選擇排序</item>
         <item>說明 升序</item>
         <item>描述 降序</item>
         <item>金額遞增</item>

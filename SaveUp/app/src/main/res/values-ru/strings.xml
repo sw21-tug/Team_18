@@ -36,6 +36,7 @@
     <string name="adds_form">добавляет форму</string>
     <string name="no_expense">Никаких расходов пока не производилось!</string>
     <string-array name="spinner_array">
+        <item>Выберите сортировку</item>
         <item>Описание По возрастанию</item>
         <item>Описание По убыванию</item>
         <item>Сумма по возрастанию</item>
