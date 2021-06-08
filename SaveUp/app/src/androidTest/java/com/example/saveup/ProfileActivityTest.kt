@@ -246,6 +246,23 @@ class ProfileActivityTest {
         onView(withText("monitor with keyboard")).check(doesNotExist());
     }
 
+    @Test
+    fun checkExpenseTagsButtonIsDisplayed() {
+        getToProfilePage()
+        onView(withId(R.id.form_button)).perform(click())
+        onView(withText(R.string.tab_text_2)).perform(click())
+
+        onView(withId(R.id.tags_button_expense)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun checkTagsButtonIncomeIsDisplayed() {
+        getToProfilePage()
+        onView(withId(R.id.form_button)).perform(click())
+        onView(withId(R.id.tags_button_income)).perform(click())
+
+        onView(withText(R.string.tags_button_income)).check(matches(isDisplayed()))
+    }
 
 
 }
