@@ -1,5 +1,6 @@
 package com.example.saveup.ui.form
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -27,12 +28,29 @@ class IncomeFragment : Fragment() {
         }
     }
 
+    private fun showIncomeTags(){
+        lateinit var income_tags: AlertDialog
+        val income_tags_array = arrayOf("salary", "gifts", "payback" )
+        val income_check = booleanArrayOf(false, false, false)
+        val builder = AlertDialog.Builder(this.context)
+        builder.setTitle("Choose tags")
+        builder.setMultiChoiceItems(income_tags_array, income_check){dialog, which, isChecked ->
+            income_check[which] = isChecked
+            val income_tag = income_tags_array[which]
+        }
+        income_tags = builder.create()
+        income_tags.show()
+    }
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_income, container, false)
-
+        val income_tags_button: View = root.findViewById(R.id.tags_button_income)
+        income_tags_button.setOnClickListener(){
+            showIncomeTags()
+        }
         val save_income: View = root.findViewById(R.id.save_button_income)
 
         save_income.setOnClickListener{
