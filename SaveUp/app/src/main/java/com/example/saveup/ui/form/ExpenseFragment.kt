@@ -1,5 +1,6 @@
 package com.example.saveup.ui.form
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -29,7 +30,20 @@ class ExpenseFragment : Fragment() {
     }
 
 
+    private fun showTags(){
+        lateinit var expense_tags: AlertDialog
+        val expense_tags_array = arrayOf("car", "groceries","personal hygiene", "cleaning products", "clothes", "rent", "luxury" )
+        val expense_check = booleanArrayOf(false, false, false, false, false, false, false)
+        val builder = AlertDialog.Builder(this.context)
+        builder.setTitle("Choose tags")
+        builder.setMultiChoiceItems(expense_tags_array, expense_check) { dialog, which, isChecked ->
+            expense_check[which] = isChecked
+            val expense_tag = expense_tags_array[which]
 
+        }
+        expense_tags = builder.create()
+        expense_tags.show()
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +52,12 @@ class ExpenseFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_expense, container, false)
         val expense_tag_button: View = root.findViewById(R.id.tags_button_expense)
+
+        expense_tag_button.setOnClickListener{
+            showTags()
+        }
+
+
 
         val save_expense: View = root.findViewById(R.id.save_button_expense)
 
@@ -99,4 +119,6 @@ class ExpenseFragment : Fragment() {
             }
         }
     }
+
+
 }
