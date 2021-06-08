@@ -170,4 +170,5 @@ class LoginActivityTest {
         onView(withId(R.id.login_button)).perform(click())
         onView(withId(R.id.login_email)).check(matches(isDisplayed()))
     }
+
 }

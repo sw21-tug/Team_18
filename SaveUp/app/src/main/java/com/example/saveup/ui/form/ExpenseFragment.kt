@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -27,11 +28,16 @@ class ExpenseFragment : Fragment() {
         }
     }
 
+
+
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+
         val root = inflater.inflate(R.layout.fragment_expense, container, false)
+        val expense_tag_button: View = root.findViewById(R.id.tags_button_expense)
 
         val save_expense: View = root.findViewById(R.id.save_button_expense)
 
