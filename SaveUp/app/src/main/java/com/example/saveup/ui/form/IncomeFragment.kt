@@ -38,8 +38,13 @@ class IncomeFragment : Fragment() {
             income_check[which] = isChecked
             val income_tag = income_tags_array[which]
         }
+
+        builder.setPositiveButton("OK") { _, _ ->
+            Toast.makeText(this.context,"Ok.",Toast.LENGTH_SHORT).show()
+        }
         income_tags = builder.create()
         income_tags.show()
+        /*income_tags.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(2)*/
     }
 
     override fun onCreateView(

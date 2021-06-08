@@ -41,6 +41,9 @@ class ExpenseFragment : Fragment() {
             val expense_tag = expense_tags_array[which]
 
         }
+        builder.setPositiveButton("OK") { _, _ ->
+            Toast.makeText(this.context,"Ok.",Toast.LENGTH_SHORT).show()
+        }
         expense_tags = builder.create()
         expense_tags.show()
     }
