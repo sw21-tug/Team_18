@@ -147,7 +147,11 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 val intent = Intent (this, ProfileActivity::class.java)
                 startActivity(intent)
             }
-            R.id.navigation_else -> println("Create another activity")
+            R.id.navigation_logout -> {
+                getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
+                val intent = Intent (this, MainActivity::class.java)
+                startActivity(intent)
+            }
             else -> println("This button isn't implemented yet")
         }
 
