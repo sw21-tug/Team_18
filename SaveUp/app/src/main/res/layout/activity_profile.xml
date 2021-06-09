@@ -11,6 +11,7 @@
     android:id="@+id/drawerLayout">
 
     <include
+        android:id="@+id/profile_content"
         layout="@layout/content_profile" />
 
     <com.google.android.material.navigation.NavigationView
