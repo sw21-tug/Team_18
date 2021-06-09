@@ -35,11 +35,6 @@ class ExpenseFragment : Fragment() {
         expense_tags_array.set(5,resources.getString(R.string.string_rent))
         expense_tags_array.set(6,resources.getString(R.string.string_luxury))
 
-
-
-
-
-
         pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
@@ -83,8 +78,6 @@ class ExpenseFragment : Fragment() {
             expenseTags()
         }
 
-
-
         val save_expense: View = root.findViewById(R.id.save_button_expense)
 
         save_expense.setOnClickListener{
@@ -100,7 +93,6 @@ class ExpenseFragment : Fragment() {
 
             var tags = ""
             tags = expense_tags_database.joinToString(",")
-            Toast.makeText(this.context, tags, Toast.LENGTH_SHORT).show()
 
             val queue = Volley.newRequestQueue(this.context)
             val url = "https://saveup.weisl.cc/userdata"
@@ -135,7 +127,6 @@ class ExpenseFragment : Fragment() {
             root.category_input_field_expense.text.clear()
             root.description_input_field_expense.text.clear()
         }
-
 
         return root
     }

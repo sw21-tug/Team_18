@@ -40,11 +40,7 @@ class IncomeFragment : Fragment() {
 
     private fun incomeTags(){
 
-
-
-
         lateinit var income_tags: AlertDialog
-
 
         val builder = AlertDialog.Builder(this.context, R.style.MyDialogTheme)
         builder.setTitle(R.string.string_choose_tags)
@@ -52,7 +48,6 @@ class IncomeFragment : Fragment() {
             income_check[which] = isChecked
 
         }
-
 
         builder.setPositiveButton("OK") { _, _ ->
             Toast.makeText(this.context, "Ok.", Toast.LENGTH_SHORT).show()
@@ -92,10 +87,7 @@ class IncomeFragment : Fragment() {
             val description = root.description_input_field_income.text.toString()
             var tags = ""
 
-
             tags = tags_database.joinToString(",")
-            Toast.makeText(this.context, tags, Toast.LENGTH_SHORT).show()
-
 
             val sharedPref: SharedPreferences = this.activity!!.getSharedPreferences("User", Context.MODE_PRIVATE)
             val token = sharedPref.getString("user_token", null)
