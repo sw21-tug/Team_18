@@ -1,10 +1,6 @@
 package com.example.saveup
 
 import android.content.Context
-import android.content.Intent
-import android.util.Log
-import androidx.lifecycle.Lifecycle
-import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
@@ -57,8 +53,8 @@ class ProfileActivityTest {
 
     @Test
     fun checkLogout() {
-        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open());
-        onView(withId(R.id.navigation_logout)).perform(click());
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+        onView(withId(R.id.navigation_logout)).perform(click())
         onView(withId(R.id.Log_In)).check(matches(isDisplayed()))
         assertNull(getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).getString("user_token", null))
     }
@@ -182,11 +178,11 @@ class ProfileActivityTest {
             .perform(typeText("monitor with keyboard"))
             .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.save_button_income)).perform(click())
-        onView(withText("1000")).check(doesNotExist());
-        onView(withText("01.01.2020")).check(doesNotExist());
-        onView(withText("business")).check(doesNotExist());
-        onView(withText("computer")).check(doesNotExist());
-        onView(withText("monitor with keyboard")).check(doesNotExist());
+        onView(withText("1000")).check(doesNotExist())
+        onView(withText("01.01.2020")).check(doesNotExist())
+        onView(withText("business")).check(doesNotExist())
+        onView(withText("computer")).check(doesNotExist())
+        onView(withText("monitor with keyboard")).check(doesNotExist())
         pressBack()
     }
 
@@ -204,11 +200,11 @@ class ProfileActivityTest {
             .perform(typeText("monitor with keyboard"))
             .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.save_button_expense)).perform(click())
-        onView(withText("1000")).check(doesNotExist());
-        onView(withText("01.01.2020")).check(doesNotExist());
-        onView(withText("business")).check(doesNotExist());
-        onView(withText("computer")).check(doesNotExist());
-        onView(withText("monitor with keyboard")).check(doesNotExist());
+        onView(withText("1000")).check(doesNotExist())
+        onView(withText("01.01.2020")).check(doesNotExist())
+        onView(withText("business")).check(doesNotExist())
+        onView(withText("computer")).check(doesNotExist())
+        onView(withText("monitor with keyboard")).check(doesNotExist())
         pressBack()
     }
 
