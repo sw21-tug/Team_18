@@ -22,7 +22,7 @@ import java.nio.charset.Charset
 class IncomeFragment : Fragment() {
     private var income_check = booleanArrayOf(false, false, false)
 
-    private val income_tags_array = arrayOfNulls<String>(3)  /*=arrayOf(R.string.string_salary, R.string.string_gifts, R.string.string_payback)*/
+    private val income_tags_array = arrayOfNulls<String>(3)
     private val tags_database : MutableList<String> = ArrayList()
     private lateinit var pageViewModel: PageViewModel
 
@@ -67,13 +67,9 @@ class IncomeFragment : Fragment() {
             }
         }
 
-
         income_tags = builder.create()
         income_tags.show()
-
     }
-
-
 
 
     override fun onCreateView(
@@ -96,20 +92,10 @@ class IncomeFragment : Fragment() {
             val account = root.account_input_field_income.text.toString()
             val category = root.category_input_field_income.text.toString()
             val description = root.description_input_field_income.text.toString()
-
-            var x = 0
             var tags = ""
-            while(x < tags_database.size){
 
-                if(x == tags_database.size-1){
-                    tags += tags_database.get(x)
-                }
-                else{
-                    tags += tags_database.get(x) + ","
 
-                }
-                x++
-            }
+            tags = tags_database.joinToString(",")
             Toast.makeText(this.context, tags, Toast.LENGTH_SHORT).show()
 
 
