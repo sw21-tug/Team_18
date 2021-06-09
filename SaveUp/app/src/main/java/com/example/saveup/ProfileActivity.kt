@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -91,12 +90,10 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
                     // response
                     val json_string = response.toString()
                     Log.d("API", json_string)
-                    Toast.makeText(this, "Got data for list", Toast.LENGTH_SHORT).show()
                     updateList(json_string)
                 },
                 Response.ErrorListener { error ->
                     Log.d("API", "error => $error")
-                    Toast.makeText(this, "Requesting expenses failed", Toast.LENGTH_SHORT).show()
                 }
             ){}
         queue.add(stringReq)
@@ -155,10 +152,10 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
 
         drawerLayout.closeDrawer(GravityCompat.START)
-        return true;
+        return true
     }
 
-    fun setNavigationViewListener() {
+    private fun setNavigationViewListener() {
         nav_menu.setNavigationItemSelectedListener(this)
     }
 

@@ -1,4 +1,3 @@
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.saveup.R
 import com.example.saveup.ui.form.FormData
 import kotlinx.android.synthetic.main.form_data_layout.view.*
-import org.w3c.dom.Text
 
 class ListAdapter(val context: Context, val items: ArrayList<FormData>) :
     RecyclerView.Adapter<ListAdapter.ViewHolder>() {
-
-    var sortedBy: String = ""
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val formDate: TextView = view.form_date
