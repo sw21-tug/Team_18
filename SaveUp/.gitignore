@@ -15,6 +15,9 @@
 local.properties
 /.idea/compiler.xml
 /.idea/gradle.xml
+/.idea/jarRepositories.xml
 /.idea/misc.xml
 /.idea/runConfigurations.xml
+/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch
+/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml
 /.idea/vcs.xml

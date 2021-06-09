@@ -12,7 +12,6 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
-import org.json.JSONObject
 import java.lang.Exception
 import java.nio.charset.Charset
 

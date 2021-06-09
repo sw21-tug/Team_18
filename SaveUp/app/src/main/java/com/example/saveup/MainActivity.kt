@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.LocaleList
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import java.util.*
