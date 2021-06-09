@@ -38,11 +38,7 @@ class IncomeFragment : Fragment() {
 
     private fun incomeTags(){
 
-        var count = 0
-        while(count < income_check.size) {
-            income_check[count] = false
-            count++
-        }
+
 
 
         lateinit var income_tags: AlertDialog
