@@ -30,14 +30,23 @@ class IncomeFragment : Fragment() {
 
     private fun showIncomeTags(){
         lateinit var income_tags: AlertDialog
-        val income_tags_array = arrayOf("salary", "gifts", "payback" )
+        val income_tags_array = arrayOf("salary", "gifts", "payback")
         val income_check = booleanArrayOf(false, false, false)
+        val tags_store = arrayOf("0", "0", "0")
         val builder = AlertDialog.Builder(this.context)
         builder.setTitle("Choose tags")
         builder.setMultiChoiceItems(income_tags_array, income_check){dialog, which, isChecked ->
             income_check[which] = isChecked
-            val income_tag = income_tags_array[which]
+            tags_store[which] = income_tags_array[which]
         }
+        var x = 0
+        var y = 0
+        val tags_database = Array(3) { "" }
+        while(x <= income_tags_array.size)
+            if(tags_store[x] != "0")
+                tags_database[y] = tags_store[x]
+                y++
+            x++
 
         builder.setPositiveButton("OK") { _, _ ->
             Toast.makeText(this.context,"Ok.",Toast.LENGTH_SHORT).show()
@@ -52,7 +61,9 @@ class IncomeFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_income, container, false)
+
         val income_tags_button: View = root.findViewById(R.id.tags_button_income)
+
         income_tags_button.setOnClickListener(){
             showIncomeTags()
         }
@@ -65,13 +76,14 @@ class IncomeFragment : Fragment() {
             val account = root.account_input_field_income.text.toString()
             val category = root.category_input_field_income.text.toString()
             val description = root.description_input_field_income.text.toString()
+            /*val tags*/
 
             val queue = Volley.newRequestQueue(this.context)
             val url = "https://saveup.weisl.cc/userdata"
 
             val requestBody = "type=" + type + "&amount=" + income_amount + "&date=" + date +
                               "&account=" + account + "&category=" + category +
-                              "&description=" + description
+                              "&description=" + description /*+"&tags=" + tags*/
 
             val stringReq : StringRequest =
                 object : StringRequest(Method.POST, url,
