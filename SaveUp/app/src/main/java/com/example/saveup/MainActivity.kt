@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.LocaleList
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import java.util.*
@@ -18,6 +17,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE)
+        if(sharedPref.getString("user_token", null) != null)
+        {
+            val intent = Intent (this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         loadLocale()
 
         val changeLangButton: Button = findViewById(R.id.buttonChangeLang)

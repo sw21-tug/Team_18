@@ -12,7 +12,6 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
-import org.json.JSONObject
 import java.lang.Exception
 import java.nio.charset.Charset
 
@@ -20,6 +19,14 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE)
+        if(sharedPref.getString("user_token", null) != null)
+        {
+            val intent = Intent (this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     fun login(view: View) {
