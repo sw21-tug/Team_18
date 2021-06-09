@@ -65,7 +65,7 @@ class IncomeFragment : Fragment() {
                 }
                 x++
             }
-        }.create()
+        }
 
 
         income_tags = builder.create()
