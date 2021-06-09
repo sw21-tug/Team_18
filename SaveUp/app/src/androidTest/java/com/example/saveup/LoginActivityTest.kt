@@ -17,7 +17,7 @@ import java.lang.Thread.sleep
 class LoginActivityTest {
 
     @Rule @JvmField var activityRule: ActivityScenarioRule<MainActivity> =
-            ActivityScenarioRule(MainActivity::class.java)
+        ActivityScenarioRule(MainActivity::class.java)
 
     @Test
     fun checkLoginFieldIsDisplayed() {
@@ -61,14 +61,14 @@ class LoginActivityTest {
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
         onView(withId(R.id.login_password)).perform(typeText("root")).
-            perform(closeSoftKeyboard())
+        perform(closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
 
     @Test
     fun checkLoginFormChinese() {
-        onView(withId(R.id.buttonChangeLangtest)).perform(click())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
         onView(withText("Chinese")).check(matches(isDisplayed()))
         onView(withText("Chinese")).perform(click())
         onView(withId(R.id.Log_In)).perform(click())
@@ -79,7 +79,7 @@ class LoginActivityTest {
 
     @Test
     fun checkChangeLanguageChinese() {
-        onView(withId(R.id.buttonChangeLangtest)).perform(click())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
         onView(withText("Chinese")).check(matches(isDisplayed()))
         onView(withText("Chinese")).perform(click())
         onView(withId(R.id.Log_In)).perform(click())
@@ -92,7 +92,7 @@ class LoginActivityTest {
 
     @Test
     fun checkLoginFormRussian() {
-        onView(withId(R.id.buttonChangeLangtest)).perform(click())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
         onView(withText("Russian")).check(matches(isDisplayed()))
         onView(withText("Russian")).perform(click())
         onView(withId(R.id.Log_In)).perform(click())
@@ -103,7 +103,7 @@ class LoginActivityTest {
 
     @Test
     fun checkChangeLanguageRussian() {
-        onView(withId(R.id.buttonChangeLangtest)).perform(click())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
         onView(withText("Russian")).check(matches(isDisplayed()))
         onView(withText("Russian")).perform(click())
         onView(withId(R.id.Log_In)).perform(click())
@@ -115,7 +115,7 @@ class LoginActivityTest {
     }
     @Test
     fun checkChangeLanguageEnglish() {
-        onView(withId(R.id.buttonChangeLangtest)).perform(click())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
         onView(withText("English")).check(matches(isDisplayed()))
         onView(withText("English")).perform(click())
         onView(withId(R.id.Log_In)).perform(click())
@@ -127,7 +127,7 @@ class LoginActivityTest {
     }
     @Test
     fun checkDatabaseLoginTrue() {
-        onView(withId(R.id.buttonChangeLangtest)).perform(click())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
         onView(withText("English")).check(matches(isDisplayed()))
         onView(withText("English")).perform(click())
 
@@ -150,7 +150,7 @@ class LoginActivityTest {
     }
     @Test
     fun checkDatabaseLoginFalse() {
-        onView(withId(R.id.buttonChangeLangtest)).perform(click())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
         onView(withText("English")).check(matches(isDisplayed()))
         onView(withText("English")).perform(click())
 
