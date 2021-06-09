@@ -31,6 +31,20 @@
     <string name="text_description">Описание</string>
     <string name="save_button">Сохранить</string>
     <string name="date_placeholder">TT.MM.JJJJ</string>
+    <string name="tags_button_expense">Теги</string>
+    <string name="tags_button_income">Теги</string>
+    <string name="string_salary">Оплата труда</string>
+    <string name="string_gifts">Подарки</string>
+    <string name="string_payback">Окупаемость</string>
+    <string name="string_car">Машина</string>
+    <string name="string_groceries">продукты</string>
+    <string name="string_personal_hygiene">личная гигиена</string>
+    <string name="string_cleaning_products">чистящие средства</string>
+    <string name="string_clothes">Одежда</string>
+    <string name="string_rent">Арендная плата</string>
+    <string name="string_luxury">Роскошь</string>
+    <string name="string_choose_tags">Выберите теги</string>
+
 
     // profile activity
     <string name="adds_form">добавляет форму</string>

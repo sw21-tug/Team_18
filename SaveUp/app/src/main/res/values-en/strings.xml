@@ -31,6 +31,20 @@
     <string name="text_description">Description</string>
     <string name="save_button">Save</string>
     <string name="date_placeholder">TT.MM.JJJJ</string>
+    <string name="tags_button_expense">Tags</string>
+    <string name="tags_button_income">Tags</string>
+    <string name="string_salary">Salary</string>
+    <string name="string_gifts">Gifts</string>
+    <string name="string_payback">Payback</string>
+    <string name="string_car">Car</string>
+    <string name="string_groceries">Groceries</string>
+    <string name="string_personal_hygiene">Personal Hygiene</string>
+    <string name="string_cleaning_products">Cleaning Products</string>
+    <string name="string_clothes">Clothes</string>
+    <string name="string_rent">Rent</string>
+    <string name="string_luxury">Luxury</string>
+    <string name="string_choose_tags">Choose Tags</string>
+
 
     // profile activity
     <string name="adds_form">adds form</string>

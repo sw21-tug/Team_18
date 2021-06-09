@@ -1,6 +1,8 @@
 package com.example.saveup.ui.form
 
 import android.app.AlertDialog
+import android.content.DialogInterface
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,18 +15,22 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.saveup.R
-import java.nio.charset.Charset
 import kotlinx.android.synthetic.main.fragment_income.view.*
+import java.nio.charset.Charset
 
 
 class IncomeFragment : Fragment() {
     private var income_check = booleanArrayOf(false, false, false)
-    private val income_tags_array = arrayOf("salary", "gifts", "payback")
+
+    private val income_tags_array = arrayOfNulls<String>(3)  /*=arrayOf(R.string.string_salary, R.string.string_gifts, R.string.string_payback)*/
     private val tags_database : MutableList<String> = ArrayList()
     private lateinit var pageViewModel: PageViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        income_tags_array.set(0,resources.getString(R.string.string_salary))
+        income_tags_array.set(1,resources.getString(R.string.string_gifts))
+        income_tags_array.set(2,resources.getString(R.string.string_payback))
         pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
@@ -41,30 +47,38 @@ class IncomeFragment : Fragment() {
 
         lateinit var income_tags: AlertDialog
 
-        val tags_store = arrayOf("0", "0", "0")
-        val builder = AlertDialog.Builder(this.context)
-        builder.setTitle("Choose tags")
+
+        val builder = AlertDialog.Builder(this.context, R.style.MyDialogTheme)
+        builder.setTitle(R.string.string_choose_tags)
         builder.setMultiChoiceItems(income_tags_array, income_check){dialog, which, isChecked ->
             income_check[which] = isChecked
 
         }
 
 
-
-
-        builder.setPositiveButton("OK") { _, _ ->
-            Toast.makeText(this.context,"Ok.",Toast.LENGTH_SHORT).show()
+        val positiveButton = builder.setPositiveButton("OK") { _, _ ->
+            Toast.makeText(this.context, "Ok.", Toast.LENGTH_SHORT).show()
             var x = 0
-            while(x < income_tags_array.size){
-                if(income_check[x]){
-                    tags_database.add(income_tags_array[x])
+            while (x < income_tags_array.size) {
+                if (income_check[x]) {
+                    tags_database.add(income_tags_array[x].toString())
                 }
-                x++}
-        }
+                x++
+            }
+        }.create()
+        positiveButton.setOnShowListener(DialogInterface.OnShowListener(){
+            fun onShow(dialog: DialogInterface?){
+                positiveButton.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.BLUE)
+            }
+        })
+        positiveButton.show()
         income_tags = builder.create()
         income_tags.show()
 
     }
+
+
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,

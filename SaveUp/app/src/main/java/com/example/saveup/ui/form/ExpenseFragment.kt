@@ -20,12 +20,25 @@ import java.nio.charset.Charset
 
 class ExpenseFragment : Fragment() {
     private var expense_check = booleanArrayOf(false, false, false, false, false, false, false)
-    private val expense_tags_array = arrayOf("car", "groceries","personal hygiene", "cleaning products", "clothes", "rent", "luxury" )
+    private val expense_tags_array  = arrayOfNulls<String>(7)/*arrayOf("car", "groceries","personal hygiene", "cleaning products", "clothes", "rent", "luxury" )*/
     private val expense_tags_database : MutableList<String> = ArrayList()
     private lateinit var pageViewModel: PageViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        expense_tags_array.set(0,resources.getString(R.string.string_car))
+        expense_tags_array.set(1,resources.getString(R.string.string_groceries))
+        expense_tags_array.set(2,resources.getString(R.string.string_personal_hygiene))
+        expense_tags_array.set(3,resources.getString(R.string.string_cleaning_products))
+        expense_tags_array.set(4,resources.getString(R.string.string_clothes))
+        expense_tags_array.set(5,resources.getString(R.string.string_rent))
+        expense_tags_array.set(6,resources.getString(R.string.string_luxury))
+
+
+
+
+
+
         pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
@@ -45,7 +58,7 @@ class ExpenseFragment : Fragment() {
 
 
         val builder = AlertDialog.Builder(this.context)
-        builder.setTitle("Choose tags")
+        builder.setTitle(R.string.string_choose_tags)
         builder.setMultiChoiceItems(expense_tags_array, expense_check) { dialog, which, isChecked ->
             expense_check[which] = isChecked
 
@@ -55,7 +68,7 @@ class ExpenseFragment : Fragment() {
             var z = 0
             while(z < expense_tags_array.size){
                 if(expense_check[z]){
-                    expense_tags_database.add(expense_tags_array[z])
+                    expense_tags_database.add(expense_tags_array[z].toString())
                 }
             z++}
         }
