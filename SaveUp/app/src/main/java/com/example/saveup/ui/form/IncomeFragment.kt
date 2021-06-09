@@ -56,7 +56,7 @@ class IncomeFragment : Fragment() {
         }
 
 
-        val positiveButton = builder.setPositiveButton("OK") { _, _ ->
+        builder.setPositiveButton("OK") { _, _ ->
             Toast.makeText(this.context, "Ok.", Toast.LENGTH_SHORT).show()
             var x = 0
             while (x < income_tags_array.size) {
@@ -67,7 +67,7 @@ class IncomeFragment : Fragment() {
             }
         }.create()
 
-        positiveButton.show()
+
         income_tags = builder.create()
         income_tags.show()
 
