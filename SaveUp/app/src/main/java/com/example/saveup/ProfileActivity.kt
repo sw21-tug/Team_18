@@ -15,7 +15,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -27,6 +26,7 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.content_profile.*
 import org.json.JSONArray
 import org.json.JSONException
+import java.nio.charset.Charset
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -55,7 +55,7 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
 
         // get and display all the data for the user from the database
-        getExpensesFromDatabase()
+        getUserdataFromDatabase()
 
         // set user info for drawer
         val name: String = sharedPref.getString("user_prename", " ")+
@@ -81,16 +81,20 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     override fun onResume() {
         super.onResume()
-        getExpensesFromDatabase()
+        getUserdataFromDatabase()
 
         val usersList: ArrayList<FormData> = ArrayList()
         val itemAdapter = ListAdapter(this, usersList)
         form_list.adapter = itemAdapter
     }
 
-    private fun getExpensesFromDatabase(){
+    private fun getUserdataFromDatabase(){
         val queue = Volley.newRequestQueue(this)
-        val url = "https://saveup.weisl.cc/userdata"
+
+        val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE)
+        val token = sharedPref.getString("user_token", null)
+
+        val url = "https://saveup.weisl.cc/userdata?token=" + token
 
         val stringReq : StringRequest =
             object : StringRequest(Method.GET, url,

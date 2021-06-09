@@ -83,73 +83,7 @@ class LoginActivityTest {
     }
 
     @Test
-    fun checkLoginFormChinese() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("Chinese")).check(matches(isDisplayed()))
-        onView(withText("Chinese")).perform(click())
-        onView(withId(R.id.Log_In)).perform(click())
-        onView(withText("歡迎回來！")).check(matches(isDisplayed()))
-        onView(withText("電子郵件")).check(matches(isDisplayed()))
-        onView(withText("密碼")).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun checkChangeLanguageChinese() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("Chinese")).check(matches(isDisplayed()))
-        onView(withText("Chinese")).perform(click())
-        onView(withId(R.id.Log_In)).perform(click())
-        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.login_password)).perform(typeText("root")).
-        perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.login_button)).perform(click())
-        sleep(1000)
-        onView(withId(R.id.form_list)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun checkLoginFormRussian() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("Russian")).check(matches(isDisplayed()))
-        onView(withText("Russian")).perform(click())
-        onView(withId(R.id.Log_In)).perform(click())
-        onView(withText("Добро пожаловать обратно!")).check(matches(isDisplayed()))
-        onView(withText("Электронное письмо")).check(matches(isDisplayed()))
-        onView(withText("Пароль")).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun checkChangeLanguageRussian() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("Russian")).check(matches(isDisplayed()))
-        onView(withText("Russian")).perform(click())
-        onView(withId(R.id.Log_In)).perform(click())
-        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.login_password)).perform(typeText("root")).
-        perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.login_button)).perform(click())
-        sleep(1000)
-        onView(withId(R.id.form_list)).check(matches(isDisplayed()))
-    }
-    @Test
-    fun checkChangeLanguageEnglish() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("English")).check(matches(isDisplayed()))
-        onView(withText("English")).perform(click())
-        onView(withId(R.id.Log_In)).perform(click())
-        onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
-        onView(withId(R.id.login_password)).perform(typeText("root")).
-        perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.login_button)).perform(click())
-        sleep(1000)
-        onView(withId(R.id.form_list)).check(matches(isDisplayed()))
-    }
-    @Test
     fun checkDatabaseLoginTrue() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("English")).check(matches(isDisplayed()))
-        onView(withText("English")).perform(click())
-
         onView(withId(R.id.Sign_Up)).perform(click())
         onView(withId(R.id.registration_prename)).perform(typeText("Max"))
         onView(withId(R.id.registration_lastname)).perform(typeText("Mustermann"))
@@ -167,12 +101,9 @@ class LoginActivityTest {
         sleep(5000)
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
+
     @Test
     fun checkDatabaseLoginFalse() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("English")).check(matches(isDisplayed()))
-        onView(withText("English")).perform(click())
-
         onView(withId(R.id.Sign_Up)).perform(click())
         onView(withId(R.id.registration_prename)).perform(typeText("Max"))
         onView(withId(R.id.registration_lastname)).perform(typeText("Mustermann"))

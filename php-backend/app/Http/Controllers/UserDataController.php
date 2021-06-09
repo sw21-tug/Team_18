@@ -14,9 +14,13 @@ use Illuminate\Support\Str;
 
 class UserDataController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
-    return response()->json(DB::table('users')->select(['prename', 'lastname', 'email', 'apiKey', 'created_at', 'updated_at'])->get());
+    $token = $request->input('token');
+    $userid = DB::table('users')->select(['id'])->where('apiKey', '=', $token)->get()->first()->id;
+    $userdata = DB::table('userdata')->where('userid', '=', $userid)->get();
+    
+    return response()->json($userdata);
   }
 
   public function create(Request $request)
@@ -34,15 +38,16 @@ class UserDataController extends Controller
     $date = explode('.', $date_german_format);
     $date_formatted = $date[2].'-'.$date[1].'-'.$date[0];
 
-    DB::insert('insert into userdata (type, userid, amount, date, account, category, description, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    DB::insert('insert into userdata (type, userid, amount, date, account, category, description, tags, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
         $request->input('type'),
-        0,
+        DB::table('users')->select(['id'])->where('apiKey', '=', $request->input('token'))->get()->first()->id,
         $request->input('amount'),
         $date_formatted,
         $request->input('account'),
         $request->input('category'),
         $request->input('description'),
+        $request->input('tags'),
         Carbon::now(),
         Carbon::now()
       ]

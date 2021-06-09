@@ -42,7 +42,6 @@ class LoginActivity : AppCompatActivity() {
                 Response.Listener { response ->
                     // response
                     val strResp = response.toString()
-                    //Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show()
 
                     try {
                         val jsonArray = JSONArray(strResp)

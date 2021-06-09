@@ -65,43 +65,4 @@ class RegistrationActivityTest {
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.registration_button)).perform(click())
     }
-
-    @Test
-    fun checkSignUpFormEnglish() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("English")).check(matches(isDisplayed()))
-        onView(withText("English")).perform(click())
-        onView(withId(R.id.Sign_Up)).perform(click())
-        onView(withText("First Name")).check(matches(isDisplayed()))
-        onView(withText("Name")).check(matches(isDisplayed()))
-        onView(withText("Email")).check(matches(isDisplayed()))
-        onView(withText("Password")).check(matches(isDisplayed()))
-        onView(withText("Create Account")).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun checkSignUpFormRussian() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("Russian")).check(matches(isDisplayed()))
-        onView(withText("Russian")).perform(click())
-        onView(withId(R.id.Sign_Up)).perform(click())
-        onView(withText("Имя")).check(matches(isDisplayed()))
-        onView(withText("Фамилия")).check(matches(isDisplayed()))
-        onView(withText("Электронное письмо")).check(matches(isDisplayed()))
-        onView(withText("Пароль")).check(matches(isDisplayed()))
-        onView(withText("Зарегистрироваться")).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun checkSignUpFormChinese() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("Chinese")).check(matches(isDisplayed()))
-        onView(withText("Chinese")).perform(click())
-        onView(withId(R.id.Sign_Up)).perform(click())
-        onView(withText("名")).check(matches(isDisplayed()))
-        onView(withText("姓")).check(matches(isDisplayed()))
-        onView(withText("電子郵件")).check(matches(isDisplayed()))
-        onView(withText("密碼")).check(matches(isDisplayed()))
-        onView(withText("創建帳號")).check(matches(isDisplayed()))
-    }
 }

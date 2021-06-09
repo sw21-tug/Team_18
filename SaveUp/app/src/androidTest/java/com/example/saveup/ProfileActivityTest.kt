@@ -205,4 +205,84 @@ class ProfileActivityTest {
         onView(withText("monitor with keyboard")).check(doesNotExist())
         pressBack()
     }
+
+    @Test
+    fun checkChangeLanguageButtonDisplayed()
+    {
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+        onView(withId(R.id.buttonChangeLang)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun checkChangeLanguageDisplayed()
+    {
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Russian")).check(matches(isDisplayed()))
+        onView(withText("Chinese")).check(matches(isDisplayed()))
+        onView(withText("English")).check(matches(isDisplayed()))
+        pressBack()
+    }
+
+    @Test
+    fun checkSelectLanguageChinese()
+    {
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Chinese")).check(matches(isDisplayed()))
+        onView(withText("Chinese")).perform(click())
+    }
+
+    @Test
+    fun checkSelectLanguageRussian()
+    {
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Russian")).check(matches(isDisplayed()))
+        onView(withText("Russian")).perform(click())
+    }
+
+    @Test
+    fun checkSelectLanguageEnglish() {
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("English")).check(matches(isDisplayed()))
+        onView(withText("English")).perform(click())
+    }
+
+    @Test
+    fun checkChangeLanguageChinese() {
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Chinese")).check(matches(isDisplayed()))
+        onView(withText("Chinese")).perform(click())
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.close())
+        onView(withId(R.id.form_button)).perform(click())
+        onView(withText("費用")).check(matches(isDisplayed()))
+        pressBack()
+    }
+
+    @Test
+    fun checkChangeLanguageRussian() {
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("Russian")).check(matches(isDisplayed()))
+        onView(withText("Russian")).perform(click())
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.close())
+        onView(withId(R.id.form_button)).perform(click())
+        onView(withText("Расходы")).check(matches(isDisplayed()))
+        pressBack()
+    }
+
+    @Test
+    fun checkChangeLanguageEnglish() {
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
+        onView(withText("English")).check(matches(isDisplayed()))
+        onView(withText("English")).perform(click())
+        onView(withId(R.id.drawerLayout)).perform(DrawerActions.close())
+        onView(withId(R.id.form_button)).perform(click())
+        onView(withText(R.string.tab_text_2)).check(matches(isDisplayed()))
+        pressBack()
+    }
 }

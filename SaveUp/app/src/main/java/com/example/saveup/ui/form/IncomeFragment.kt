@@ -1,5 +1,7 @@
 package com.example.saveup.ui.form
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.graphics.Color
@@ -38,11 +40,7 @@ class IncomeFragment : Fragment() {
 
     private fun incomeTags(){
 
-
-
-
         lateinit var income_tags: AlertDialog
-
 
         val builder = AlertDialog.Builder(this.context, R.style.MyDialogTheme)
         builder.setTitle(R.string.string_choose_tags)
@@ -50,7 +48,6 @@ class IncomeFragment : Fragment() {
             income_check[which] = isChecked
 
         }
-
 
         builder.setPositiveButton("OK") { _, _ ->
             Toast.makeText(this.context, "Ok.", Toast.LENGTH_SHORT).show()
@@ -90,15 +87,15 @@ class IncomeFragment : Fragment() {
             val description = root.description_input_field_income.text.toString()
             var tags = ""
 
-
             tags = tags_database.joinToString(",")
-            Toast.makeText(this.context, tags, Toast.LENGTH_SHORT).show()
 
+            val sharedPref: SharedPreferences = this.activity!!.getSharedPreferences("User", Context.MODE_PRIVATE)
+            val token = sharedPref.getString("user_token", null)
 
             val queue = Volley.newRequestQueue(this.context)
             val url = "https://saveup.weisl.cc/userdata"
 
-            val requestBody = "type=" + type + "&amount=" + income_amount + "&date=" + date +
+            val requestBody = "token=" + token + "&type=" + type + "&amount=" + income_amount + "&date=" + date +
                               "&account=" + account + "&category=" + category +
                               "&description=" + description + "&tags=" + tags
 

@@ -47,35 +47,4 @@ class MainActivityTest {
         onView(withId(R.id.Log_In)).check(matches(isDisplayed()))
     }
 
-    @Test
-    fun checkChangeLanguageButtonDisplayed() {
-        onView(withId(R.id.buttonChangeLang)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun checkChangeLanguageDisplayed() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("Russian")).check(matches(isDisplayed()));
-        onView(withText("Chinese")).check(matches(isDisplayed()));
-        onView(withText("English")).check(matches(isDisplayed()));
-    }
-    @Test
-    fun checkChangeLanguageChinese() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("Chinese")).check(matches(isDisplayed()));
-        onView(withText("Chinese")).perform(click())
-    }
-    @Test
-    fun checkChangeLanguageRussian() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("Russian")).check(matches(isDisplayed()));
-        onView(withText("Russian")).perform(click())
-    }
-    @Test
-    fun checkChangeLanguageEnglish() {
-        onView(withId(R.id.buttonChangeLang)).perform(click())
-        onView(withText("English")).check(matches(isDisplayed()));
-        onView(withText("English")).perform(click())
-    }
-
 }
