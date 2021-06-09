@@ -21,7 +21,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import java.lang.Thread.sleep
 
-
 @RunWith(AndroidJUnit4::class)
 class ProfileActivityTest {
 
@@ -39,7 +38,6 @@ class ProfileActivityTest {
             onView(withId(R.id.login_button)).perform(click())
             sleep(1000) // due to login delay
         }
-        //getApplicationContext<Context>().getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
     }
 
     @After fun tearDown()
@@ -207,7 +205,4 @@ class ProfileActivityTest {
         onView(withText("monitor with keyboard")).check(doesNotExist())
         pressBack()
     }
-
-
-
 }
