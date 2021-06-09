@@ -138,8 +138,10 @@ class ProfileActivityTest {
         onView(withId(R.id.account_input_field_expense)).perform(typeText("business"))
         onView(withId(R.id.category_input_field_expense)).perform(typeText("computer"))
             .perform(ViewActions.closeSoftKeyboard())
-        onView(withId(R.id.description_input_field_expense)).
-        perform(typeText("monitor with keyboard"))
+        onView(withId(R.id.description_input_field_expense))
+            .perform(typeText("monitor with keyboard"))
+            .perform(ViewActions.closeSoftKeyboard())
+
         pressBack()
     }
 
