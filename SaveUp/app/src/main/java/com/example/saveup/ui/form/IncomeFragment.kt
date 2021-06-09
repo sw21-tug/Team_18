@@ -43,7 +43,7 @@ class IncomeFragment : Fragment() {
             income_check[count] = false
             count++
         }
-        count = 0
+
 
         lateinit var income_tags: AlertDialog
 
