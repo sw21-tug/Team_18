@@ -21,7 +21,7 @@ import java.lang.Thread.sleep
 class LoginActivityTest {
 
     @Rule @JvmField var activityRule: ActivityScenarioRule<MainActivity> =
-            ActivityScenarioRule(MainActivity::class.java)
+        ActivityScenarioRule(MainActivity::class.java)
 
     @Before
     fun setUp()
@@ -76,7 +76,7 @@ class LoginActivityTest {
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
         onView(withId(R.id.login_password)).perform(typeText("root")).
-            perform(closeSoftKeyboard())
+        perform(closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
         sleep(1000)
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
