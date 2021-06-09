@@ -1,5 +1,8 @@
 package com.example.saveup
 
+import android.content.Intent
+import android.widget.Button
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.*
@@ -9,6 +12,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Test
 
+import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.runner.RunWith
 
@@ -49,7 +53,7 @@ class RegistrationActivityTest {
 
     @Test
     fun checkSignUpFormEnglish() {
-        onView(withId(R.id.buttonChangeLangtest)).perform(click())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
         onView(withText("English")).check(matches(isDisplayed()))
         onView(withText("English")).perform(click())
         onView(withId(R.id.Sign_Up)).perform(click())
@@ -62,7 +66,7 @@ class RegistrationActivityTest {
 
     @Test
     fun checkSignUpFormRussian() {
-        onView(withId(R.id.buttonChangeLangtest)).perform(click())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
         onView(withText("Russian")).check(matches(isDisplayed()))
         onView(withText("Russian")).perform(click())
         onView(withId(R.id.Sign_Up)).perform(click())
@@ -75,7 +79,7 @@ class RegistrationActivityTest {
 
     @Test
     fun checkSignUpFormChinese() {
-        onView(withId(R.id.buttonChangeLangtest)).perform(click())
+        onView(withId(R.id.buttonChangeLang)).perform(click())
         onView(withText("Chinese")).check(matches(isDisplayed()))
         onView(withText("Chinese")).perform(click())
         onView(withId(R.id.Sign_Up)).perform(click())
