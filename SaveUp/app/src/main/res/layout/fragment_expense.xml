@@ -140,7 +140,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description_text" />
+            app:layout_constraintTop_toBottomOf="@+id/description_text"
+            app:layout_constraintBottom_toTopOf="@id/tags_button_expense"/>
+
+        <Button
+            android:id="@+id/tags_button_expense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tags_button_expense"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_input_field_expense"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button

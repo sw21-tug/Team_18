@@ -31,6 +31,19 @@
     <string name="text_description">描述</string>
     <string name="save_button">保存</string>
     <string name="date_placeholder">TT.MM.JJJJ</string>
+    <string name="tags_button_expense">标签</string>
+    <string name="tags_button_income">标签</string>
+    <string name="string_salary">薪水</string>
+    <string name="string_gifts">礼物</string>
+    <string name="string_payback">回报</string>
+    <string name="string_car">车</string>
+    <string name="string_groceries">杂货</string>
+    <string name="string_personal_hygiene">个人卫生</string>
+    <string name="string_cleaning_products">清洁产品</string>
+    <string name="string_clothes">衣服</string>
+    <string name="string_rent">租</string>
+    <string name="string_luxury">奢华</string>
+    <string name="string_choose_tags">选择标签</string>
 
     // profile activity
     <string name="adds_form">添加表格</string>
