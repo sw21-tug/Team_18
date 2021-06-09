@@ -23,3 +23,7 @@ $router->get('/users', ['uses' => 'UserController@index']);
 $router->post('/users', ['uses' => 'UserController@create']);
 
 $router->post('/userdata', ['uses' => 'UserDataController@create']);
+
+$router->post('/auth', ['uses' => 'AuthController@authenticate']);
+
+$router->get('/userdata', ['uses' => 'UserDataController@index']);
