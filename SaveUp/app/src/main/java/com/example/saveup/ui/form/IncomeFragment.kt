@@ -1,5 +1,8 @@
 package com.example.saveup.ui.form
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,20 +15,58 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.saveup.R
-import java.nio.charset.Charset
 import kotlinx.android.synthetic.main.fragment_income.view.*
+import java.nio.charset.Charset
 
 
 class IncomeFragment : Fragment() {
+    private var income_check = booleanArrayOf(false, false, false)
 
+    private val income_tags_array = arrayOfNulls<String>(3)
+    private val tags_database : MutableList<String> = ArrayList()
     private lateinit var pageViewModel: PageViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        income_tags_array.set(0,resources.getString(R.string.string_salary))
+        income_tags_array.set(1,resources.getString(R.string.string_gifts))
+        income_tags_array.set(2,resources.getString(R.string.string_payback))
         pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
     }
+
+    private fun incomeTags(){
+
+
+
+
+        lateinit var income_tags: AlertDialog
+
+
+        val builder = AlertDialog.Builder(this.context, R.style.MyDialogTheme)
+        builder.setTitle(R.string.string_choose_tags)
+        builder.setMultiChoiceItems(income_tags_array, income_check){dialog, which, isChecked ->
+            income_check[which] = isChecked
+
+        }
+
+
+        builder.setPositiveButton("OK") { _, _ ->
+            Toast.makeText(this.context, "Ok.", Toast.LENGTH_SHORT).show()
+            var x = 0
+            while (x < income_tags_array.size) {
+                if (income_check[x]) {
+                    tags_database.add(income_tags_array[x].toString())
+                }
+                x++
+            }
+        }
+
+        income_tags = builder.create()
+        income_tags.show()
+    }
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +74,11 @@ class IncomeFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_income, container, false)
 
+        val income_tags_button: View = root.findViewById(R.id.tags_button_income)
+
+        income_tags_button.setOnClickListener(){
+            incomeTags()
+        }
         val save_income: View = root.findViewById(R.id.save_button_income)
 
         save_income.setOnClickListener{
@@ -42,13 +88,19 @@ class IncomeFragment : Fragment() {
             val account = root.account_input_field_income.text.toString()
             val category = root.category_input_field_income.text.toString()
             val description = root.description_input_field_income.text.toString()
+            var tags = ""
+
+
+            tags = tags_database.joinToString(",")
+            Toast.makeText(this.context, tags, Toast.LENGTH_SHORT).show()
+
 
             val queue = Volley.newRequestQueue(this.context)
             val url = "https://saveup.weisl.cc/userdata"
 
             val requestBody = "type=" + type + "&amount=" + income_amount + "&date=" + date +
                               "&account=" + account + "&category=" + category +
-                              "&description=" + description
+                              "&description=" + description + "&tags=" + tags
 
             val stringReq : StringRequest =
                 object : StringRequest(Method.POST, url,
