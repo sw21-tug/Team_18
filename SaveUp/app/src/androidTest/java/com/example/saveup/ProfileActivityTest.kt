@@ -118,7 +118,7 @@ class ProfileActivityTest {
         onView(withId(R.id.category_input_field_income)).perform(typeText("computer"))
             .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.description_input_field_income)).
-        perform(typeText("monitor with keyboard"))
+            perform(typeText("monitor with keyboard"))
     }
 
     @Test

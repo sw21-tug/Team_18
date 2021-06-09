@@ -42,8 +42,7 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
         loadLocale()
 
         setSupportActionBar(toolbar)
-        val toggle =
-            ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
         toggle.isDrawerIndicatorEnabled = true
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -51,7 +50,7 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
         // create listener for the form_button
         val fab: View = findViewById(R.id.form_button)
         fab.setOnClickListener {
-            val intent = Intent(this, FormActivity::class.java)
+            val intent = Intent (this, FormActivity::class.java)
             startActivity(intent)
         }
 
@@ -59,7 +58,7 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
         getExpensesFromDatabase()
 
         // set user info for drawer
-        val name: String = sharedPref.getString("user_prename", " ") +
+        val name: String = sharedPref.getString("user_prename", " ")+
                 " " + sharedPref.getString("user_surname", " ")
         val mail: String = sharedPref.getString("user_mail", " ")!!
         Log.d("drawer_name: ", name)
@@ -89,11 +88,11 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
         form_list.adapter = itemAdapter
     }
 
-    private fun getExpensesFromDatabase() {
+    private fun getExpensesFromDatabase(){
         val queue = Volley.newRequestQueue(this)
         val url = "https://saveup.weisl.cc/userdata"
 
-        val stringReq: StringRequest =
+        val stringReq : StringRequest =
             object : StringRequest(Method.GET, url,
                 Response.Listener { response ->
                     // response
@@ -104,7 +103,7 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 Response.ErrorListener { error ->
                     Log.d("API", "error => $error")
                 }
-            ) {}
+            ){}
         queue.add(stringReq)
     }
 
@@ -154,7 +153,7 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         when (item.itemId) {
             R.id.navigation_home -> {
-                val intent = Intent(this, ProfileActivity::class.java)
+                val intent = Intent (this, ProfileActivity::class.java)
                 startActivity(intent)
             }
             R.id.buttonChangeLang -> {
@@ -179,6 +178,11 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
                     dialog.dismiss()
                 }
                 langSelectorBuilder.create().show()
+            }
+            R.id.navigation_logout -> {
+                getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
+                val intent = Intent (this, MainActivity::class.java)
+                startActivity(intent)
             }
             else -> println("This button isn't implemented yet")
         }
@@ -207,6 +211,7 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
     private fun setNavigationViewListener() {
         nav_menu.setNavigationItemSelectedListener(this)
     }
+
 
     companion object {
         var sortListBy: String = ""

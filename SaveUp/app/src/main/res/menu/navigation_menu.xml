@@ -4,8 +4,12 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/buttonChangeLang"
         android:title="@string/change_lang" />
+
+    <item
+        android:id="@+id/navigation_logout"
+        android:title="@string/logout" />
 </menu>
