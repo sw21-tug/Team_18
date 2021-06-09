@@ -94,18 +94,9 @@ class ExpenseFragment : Fragment() {
             val category = root.category_input_field_expense.text.toString()
             val description = root.description_input_field_expense.text.toString()
 
-            var z = 0
-            var tags = ""
-            while(z < expense_tags_database.size){
-                if(z == expense_tags_database.size-1){
-                    tags += expense_tags_database.get(z)
 
-                }
-                else{
-                    tags += expense_tags_database.get(z) + ","
-                }
-                z++
-            }
+            var tags = ""
+            tags = expense_tags_database.joinToString(",")
             Toast.makeText(this.context, tags, Toast.LENGTH_SHORT).show()
             val queue = Volley.newRequestQueue(this.context)
             val url = "https://saveup.weisl.cc/userdata"
