@@ -1,12 +1,16 @@
 package com.example.saveup
 
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.DrawerActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.junit.Before
 import org.junit.Test
 
 import org.junit.Rule
@@ -17,7 +21,18 @@ import java.lang.Thread.sleep
 class LoginActivityTest {
 
     @Rule @JvmField var activityRule: ActivityScenarioRule<MainActivity> =
-            ActivityScenarioRule(MainActivity::class.java)
+        ActivityScenarioRule(MainActivity::class.java)
+
+    @Before
+    fun setUp()
+    {
+        if(ApplicationProvider.getApplicationContext<Context>()
+                .getSharedPreferences("User", Context.MODE_PRIVATE).getString("user_token", null) != null)
+        {
+            onView(withId(R.id.drawerLayout)).perform(DrawerActions.open())
+            onView(withId(R.id.navigation_logout)).perform(click())
+        }
+    }
 
     @Test
     fun checkLoginFieldIsDisplayed() {
@@ -61,8 +76,9 @@ class LoginActivityTest {
         onView(withId(R.id.Log_In)).perform(click())
         onView(withId(R.id.login_email)).perform(typeText("root@root.at"))
         onView(withId(R.id.login_password)).perform(typeText("root")).
-            perform(closeSoftKeyboard())
+        perform(closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
+        sleep(1000)
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
 
@@ -87,6 +103,7 @@ class LoginActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
+        sleep(1000)
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
 
@@ -111,6 +128,7 @@ class LoginActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
+        sleep(1000)
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
     @Test
@@ -123,6 +141,7 @@ class LoginActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
+        sleep(1000)
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
     @Test
@@ -146,7 +165,7 @@ class LoginActivityTest {
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
         sleep(5000)
-        onView(withText("profile page")).check(matches(isDisplayed()))
+        onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
     @Test
     fun checkDatabaseLoginFalse() {
