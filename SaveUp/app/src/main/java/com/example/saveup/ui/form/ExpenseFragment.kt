@@ -47,12 +47,6 @@ class ExpenseFragment : Fragment() {
 
     private fun expenseTags(){
 
-        var expense_count = 0
-        while(expense_count < expense_check.size){
-            expense_check[expense_count] = false
-            expense_count++
-        }
-        expense_count = 0
 
         lateinit var expense_tags: AlertDialog
 
