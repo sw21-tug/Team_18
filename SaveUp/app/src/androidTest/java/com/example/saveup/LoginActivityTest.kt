@@ -128,6 +128,7 @@ class LoginActivityTest {
         onView(withId(R.id.login_password)).perform(typeText("root")).
         perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.login_button)).perform(click())
+        sleep(1000)
         onView(withId(R.id.form_list)).check(matches(isDisplayed()))
     }
     @Test
