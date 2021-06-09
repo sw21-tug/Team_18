@@ -1,5 +1,7 @@
 package com.example.saveup.ui.form
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -43,10 +45,13 @@ class ExpenseFragment : Fragment() {
             val category = root.category_input_field_expense.text.toString()
             val description = root.description_input_field_expense.text.toString()
 
+            val sharedPref:SharedPreferences = this.activity!!.getSharedPreferences("User", Context.MODE_PRIVATE)
+            val token = sharedPref.getString("user_token", null)
+
             val queue = Volley.newRequestQueue(this.context)
             val url = "https://saveup.weisl.cc/userdata"
 
-            val requestBody = "type=" + type + "&amount=" + expense_text + "&date=" + date +
+            val requestBody = "token=" + token + "&type=" + type + "&amount=" + expense_text + "&date=" + date +
                     "&account=" + account + "&category=" + category +
                     "&description=" + description
 
