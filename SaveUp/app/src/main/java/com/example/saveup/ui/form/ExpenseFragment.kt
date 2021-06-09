@@ -57,7 +57,7 @@ class ExpenseFragment : Fragment() {
         lateinit var expense_tags: AlertDialog
 
 
-        val builder = AlertDialog.Builder(this.context)
+        val builder = AlertDialog.Builder(this.context, R.style.MyDialogTheme)
         builder.setTitle(R.string.string_choose_tags)
         builder.setMultiChoiceItems(expense_tags_array, expense_check) { dialog, which, isChecked ->
             expense_check[which] = isChecked
