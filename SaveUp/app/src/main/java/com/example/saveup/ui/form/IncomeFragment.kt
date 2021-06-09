@@ -66,11 +66,7 @@ class IncomeFragment : Fragment() {
                 x++
             }
         }.create()
-        positiveButton.setOnShowListener(DialogInterface.OnShowListener(){
-            fun onShow(dialog: DialogInterface?){
-                positiveButton.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.BLUE)
-            }
-        })
+
         positiveButton.show()
         income_tags = builder.create()
         income_tags.show()
