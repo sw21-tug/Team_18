@@ -8,7 +8,4 @@
     <item
         android:id="@+id/buttonChangeLang"
         android:title="@string/change_lang" />
-    <item
-        android:id="@+id/navigation_else"
-        android:title="Else" />
 </menu>
