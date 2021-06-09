@@ -30,7 +30,7 @@ class IncomeFragment : Fragment() {
         }
     }
 
-    private fun showIncomeTags(){
+    private fun incomeTags(){
 
         var count = 0
         while(count < income_check.size) {
@@ -63,7 +63,7 @@ class IncomeFragment : Fragment() {
         }
         income_tags = builder.create()
         income_tags.show()
-        /*income_tags.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(2)*/
+
     }
 
     override fun onCreateView(
@@ -75,7 +75,7 @@ class IncomeFragment : Fragment() {
         val income_tags_button: View = root.findViewById(R.id.tags_button_income)
 
         income_tags_button.setOnClickListener(){
-            showIncomeTags()
+            incomeTags()
         }
         val save_income: View = root.findViewById(R.id.save_button_income)
 
@@ -86,7 +86,7 @@ class IncomeFragment : Fragment() {
             val account = root.account_input_field_income.text.toString()
             val category = root.category_input_field_income.text.toString()
             val description = root.description_input_field_income.text.toString()
-            /*val tags */
+
             var x = 0
             var tags = ""
             while(x < tags_database.size){

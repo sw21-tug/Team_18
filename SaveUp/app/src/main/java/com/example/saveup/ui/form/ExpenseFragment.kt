@@ -19,7 +19,9 @@ import java.nio.charset.Charset
 
 
 class ExpenseFragment : Fragment() {
-
+    private var expense_check = booleanArrayOf(false, false, false, false, false, false, false)
+    private val expense_tags_array = arrayOf("car", "groceries","personal hygiene", "cleaning products", "clothes", "rent", "luxury" )
+    private val expense_tags_database : MutableList<String> = ArrayList()
     private lateinit var pageViewModel: PageViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,19 +32,32 @@ class ExpenseFragment : Fragment() {
     }
 
 
-    private fun showTags(){
+    private fun expenseTags(){
+
+        var expense_count = 0
+        while(expense_count < expense_check.size){
+            expense_check[expense_count] = false
+            expense_count++
+        }
+        expense_count = 0
+
         lateinit var expense_tags: AlertDialog
-        val expense_tags_array = arrayOf("car", "groceries","personal hygiene", "cleaning products", "clothes", "rent", "luxury" )
-        val expense_check = booleanArrayOf(false, false, false, false, false, false, false)
+
+
         val builder = AlertDialog.Builder(this.context)
         builder.setTitle("Choose tags")
         builder.setMultiChoiceItems(expense_tags_array, expense_check) { dialog, which, isChecked ->
             expense_check[which] = isChecked
-            val expense_tag = expense_tags_array[which]
 
         }
         builder.setPositiveButton("OK") { _, _ ->
             Toast.makeText(this.context,"Ok.",Toast.LENGTH_SHORT).show()
+            var z = 0
+            while(z < expense_tags_array.size){
+                if(expense_check[z]){
+                    expense_tags_database.add(expense_tags_array[z])
+                }
+            z++}
         }
         expense_tags = builder.create()
         expense_tags.show()
@@ -57,7 +72,7 @@ class ExpenseFragment : Fragment() {
         val expense_tag_button: View = root.findViewById(R.id.tags_button_expense)
 
         expense_tag_button.setOnClickListener{
-            showTags()
+            expenseTags()
         }
 
 
@@ -72,12 +87,25 @@ class ExpenseFragment : Fragment() {
             val category = root.category_input_field_expense.text.toString()
             val description = root.description_input_field_expense.text.toString()
 
+            var z = 0
+            var tags = ""
+            while(z < expense_tags_database.size){
+                if(z == expense_tags_database.size-1){
+                    tags += expense_tags_database.get(z)
+
+                }
+                else{
+                    tags += expense_tags_database.get(z) + ","
+                }
+                z++
+            }
+            Toast.makeText(this.context, tags, Toast.LENGTH_SHORT).show()
             val queue = Volley.newRequestQueue(this.context)
             val url = "https://saveup.weisl.cc/userdata"
 
             val requestBody = "type=" + type + "&amount=" + expense_text + "&date=" + date +
                     "&account=" + account + "&category=" + category +
-                    "&description=" + description
+                    "&description=" + description + "&tags=" + tags
 
             val stringReq : StringRequest =
                 object : StringRequest(Method.POST, url,
