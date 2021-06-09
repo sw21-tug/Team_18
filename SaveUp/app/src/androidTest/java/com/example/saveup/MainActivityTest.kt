@@ -20,7 +20,7 @@ import org.junit.runner.RunWith
 class MainActivityTest {
 
     @Rule @JvmField var activityRule: ActivityScenarioRule<MainActivity> =
-            ActivityScenarioRule(MainActivity::class.java)
+        ActivityScenarioRule(MainActivity::class.java)
 
     @Test
     fun checkLoginButtonDisplayed() {

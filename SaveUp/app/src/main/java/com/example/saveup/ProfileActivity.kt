@@ -3,13 +3,17 @@ package com.example.saveup
 import ListAdapter
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.LocaleList
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,15 +27,19 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.content_profile.*
 import org.json.JSONArray
 import org.json.JSONException
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         val sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE)
         val tokenToGet: String = sharedPref.getString("user_token", "")!!
         Log.d("TOKEN", tokenToGet)
+        loadLocale()
 
         setSupportActionBar(toolbar)
         val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
@@ -140,12 +148,36 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
 
     // DRAWER CONTENT
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
             R.id.navigation_home -> {
                 val intent = Intent (this, ProfileActivity::class.java)
                 startActivity(intent)
+            }
+            R.id.buttonChangeLang -> {
+                println("Create another activity")
+                val languages = arrayOf("Chinese", "Russian", "English")
+
+                val langSelectorBuilder = AlertDialog.Builder(this@ProfileActivity)
+                langSelectorBuilder.setTitle("Choose language:")
+                langSelectorBuilder.setSingleChoiceItems(languages, -1) { dialog, selection ->
+                    when (selection) {
+                        0 -> {
+                            setLocale("zh")
+                        }
+                        1 -> {
+                            setLocale("ru")
+                        }
+                        2 -> {
+                            setLocale("en")
+                        }
+                    }
+                    recreate()
+                    dialog.dismiss()
+                }
+                langSelectorBuilder.create().show()
             }
             R.id.navigation_logout -> {
                 getSharedPreferences("User", Context.MODE_PRIVATE).edit().clear().apply()
@@ -155,8 +187,25 @@ class ProfileActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
             else -> println("This button isn't implemented yet")
         }
 
-        drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun setLocale(localeToSet: String) {
+        val localeListToSet = LocaleList(Locale(localeToSet))
+        LocaleList.setDefault(localeListToSet)
+        resources.configuration.setLocales(localeListToSet)
+        resources.updateConfiguration(resources.configuration, resources.displayMetrics)
+        val sharedPref = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
+        sharedPref.putString("locale_to_set", localeToSet)
+        sharedPref.apply()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun loadLocale() {
+        val sharedPref = getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        val localeToSet: String = sharedPref.getString("locale_to_set", "")!!
+        setLocale(localeToSet)
     }
 
     private fun setNavigationViewListener() {
