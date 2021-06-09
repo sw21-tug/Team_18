@@ -6,8 +6,8 @@
         android:id="@+id/navigation_home"
         android:title="Home" />
     <item
-        android:id="@+id/navigation_something"
-        android:title="Something" />
+        android:id="@+id/buttonChangeLang"
+        android:title="@string/change_lang" />
     <item
         android:id="@+id/navigation_else"
         android:title="Else" />

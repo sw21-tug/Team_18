@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         loadLocale()
 
-        val changeLangButton: Button = findViewById(R.id.buttonChangeLang)
+        val changeLangButton: Button = findViewById(R.id.buttonChangeLangtest)
 
         changeLangButton.setText(R.string.change_lang)
 
