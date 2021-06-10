@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Login</string>
+    <string name="app_name">SaveUp</string>
     <string name="login_log">Your Easy Personal Fiance Manager </string>
     <string name="login_email">Email </string>
     <string name="login_password">Password </string>
@@ -11,6 +11,15 @@
     <string name="welcome_back">Welcome back!</string>
     <string name="logo">logo</string>
     <string name="title_activity_form_acitivity">FormAcitivity</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    // form list
+    <string name="list_text_id">ID : </string>
+    <string name="list_text_type">Type : </string>
+    <string name="list_text_date">Date : </string>
+    <string name="list_text_description">Description : </string>
+    <string name="list_text_amount">Amount : </string>
 
     // form activity
     <string name="tab_text_1">Income</string>
@@ -21,14 +30,54 @@
     <string name="text_category">Category</string>
     <string name="text_description">Description</string>
     <string name="save_button">Save</string>
-    <string name="date_placeholder">01.01.2020</string>
+    <string name="date_placeholder">TT.MM.JJJJ</string>
+    <string name="tags_button_expense">Tags</string>
+    <string name="tags_button_income">Tags</string>
+    <string name="string_salary">Salary</string>
+    <string name="string_gifts">Gifts</string>
+    <string name="string_payback">Payback</string>
+    <string name="string_car">Car</string>
+    <string name="string_groceries">Groceries</string>
+    <string name="string_personal_hygiene">Personal Hygiene</string>
+    <string name="string_cleaning_products">Cleaning Products</string>
+    <string name="string_clothes">Clothes</string>
+    <string name="string_rent">Rent</string>
+    <string name="string_luxury">Luxury</string>
+    <string name="string_choose_tags">Choose Tags</string>
+
 
     // profile activity
     <string name="adds_form">adds form</string>
+    <string name="no_expense">No entries have been found!</string>
+    <string-array name="spinner_array">
+        <item>Select Sorting</item>
+        <item>Description Ascending</item>
+        <item>Description Descending</item>
+        <item>Amount Ascending</item>
+        <item>Amount Descending</item>
+    </string-array>
+    <string name="description_ascending">Description Ascending</string>
+    <string name="description_descending">Description Descending</string>
+    <string name="amount_ascending">Amount Ascending</string>
+    <string name="amount_descending">Amount Descending</string>
 
     <string name="create_account">Create Account</string>
     <string name="registration_button">Register</string>
     <string name="registration_prename">First Name</string>
     <string name="registration_lastname">Name</string>
     <string name="change_lang">Change language</string>
+
+// drawer menu
+    <string name="logout">Logout</string>
+    <string name="home">Home</string>
+
+    // filter
+    <string name="filter_label">Filter</string>
+    <string name="filter_description_hint">Filter description</string>
+    <string name="filter_lower_hint">Lower limit</string>
+    <string name="filter_upper_hint">Upper limit</string>
+    <string name="filter_apply">Apply filter</string>
+    <string name="tags">Tags:</string>
+    <string name="no_tags">No tags</string>
+
 </resources>

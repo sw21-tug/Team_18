@@ -14,9 +14,82 @@ use Illuminate\Support\Str;
 
 class UserDataController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
-    return response()->json(DB::table('users')->select(['prename', 'lastname', 'email', 'apiKey', 'created_at', 'updated_at'])->get());
+    $token = $request->input('token');
+    $filterDescription = $request->input('filterText');
+    $filterAmountStart = $request->input('filterAmountStart');
+    $filterAmountEnd = $request->input('filterAmountEnd');
+    $filterTags = $request->input('filterTags');
+    $userid = DB::table('users')->select(['id'])->where('apiKey', '=', $token)->get()->first()->id;
+    $results = DB::table('userdata')->where('userid', '=', $userid);
+
+    if($filterAmountStart != "" || $filterAmountEnd != "")
+    {
+      $results->where([
+        ['amount', '>=', $filterAmountStart != "" ? intval($filterAmountStart) : PHP_INT_MIN],
+        ['amount', '<=', $filterAmountEnd != "" ? intval($filterAmountEnd) : PHP_INT_MAX],
+      ]);
+    }
+
+    $userdata = $results->get();
+
+    // filter after getting collection
+    if($filterTags != "")
+    {
+      $filterTagsExploded = explode(",", $filterTags); // get single filters
+      $indicesToDelete = [];
+
+      for($i = 0; $i < count($userdata); $i++)
+      {
+        $tagFoundCounter = 0; 
+
+        foreach($filterTagsExploded as $filter)
+        {
+          // due to multiple filters possible, remove element only when no tag was found
+          if(strpos($userdata[$i]->tags, $filter) === false)
+          {
+            $tagFoundCounter++;
+          }
+
+          if($tagFoundCounter == count($filterTagsExploded))
+          {
+            array_push($indicesToDelete, $i);
+          }
+        }
+      }
+
+      foreach($indicesToDelete as $index)
+      {
+        $userdata->pull($index);
+      }
+    } 
+
+    // find text in description
+    // get indices with key()
+    if($filterDescription != "")
+    {
+      $userdataArray = $userdata->toArray();
+      while ($element = current($userdataArray)) 
+      {
+        if(strpos(strtolower($element->description), strtolower($filterDescription)) === false)
+        {
+          $userdata->pull(key($userdataArray));
+        }
+        next($userdataArray);
+      }
+    }
+
+    // reorder for new indices
+    // due to collection no array_values is possible...
+    $userdata_temp = [];
+    foreach($userdata as $entry)
+    {
+      array_push($userdata_temp, $entry);
+    }
+    $userdata = $userdata_temp;
+
+    return response()->json($userdata);
   }
 
   public function create(Request $request)
@@ -33,16 +106,24 @@ class UserDataController extends Controller
     $date_german_format = $request->input('date');
     $date = explode('.', $date_german_format);
     $date_formatted = $date[2].'-'.$date[1].'-'.$date[0];
+    
+    $amount = $request->input('amount');
 
-    DB::insert('insert into userdata (type, userid, amount, date, account, category, description, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    if($request->input('type') == 'expense')
+    {
+      $amount *= -1;
+    }
+
+    DB::insert('insert into userdata (type, userid, amount, date, account, category, description, tags, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
         $request->input('type'),
-        0,
-        $request->input('amount'),
+        DB::table('users')->select(['id'])->where('apiKey', '=', $request->input('token'))->get()->first()->id,
+        $amount,
         $date_formatted,
         $request->input('account'),
         $request->input('category'),
         $request->input('description'),
+        $request->input('tags'),
         Carbon::now(),
         Carbon::now()
       ]

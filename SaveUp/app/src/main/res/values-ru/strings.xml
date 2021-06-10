@@ -11,6 +11,15 @@
     <string name="welcome_back">Добро пожаловать обратно!</string>
     <string name="logo">логотип</string>
     <string name="title_activity_form_acitivity">ФормаАктивность</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    // form list
+    <string name="list_text_id">я бы : </string>
+    <string name="list_text_type">тип : </string>
+    <string name="list_text_date">Дата : </string>
+    <string name="list_text_description">Описание : </string>
+    <string name="list_text_amount">количество : </string>
 
     // form activity
     <string name="tab_text_1">Доход</string>
@@ -21,14 +30,54 @@
     <string name="text_category">Категория</string>
     <string name="text_description">Описание</string>
     <string name="save_button">Сохранить</string>
-    <string name="date_placeholder">01.01.2020</string>
+    <string name="date_placeholder">TT.MM.JJJJ</string>
+    <string name="tags_button_expense">Теги</string>
+    <string name="tags_button_income">Теги</string>
+    <string name="string_salary">Оплата труда</string>
+    <string name="string_gifts">Подарки</string>
+    <string name="string_payback">Окупаемость</string>
+    <string name="string_car">Машина</string>
+    <string name="string_groceries">продукты</string>
+    <string name="string_personal_hygiene">личная гигиена</string>
+    <string name="string_cleaning_products">чистящие средства</string>
+    <string name="string_clothes">Одежда</string>
+    <string name="string_rent">Арендная плата</string>
+    <string name="string_luxury">Роскошь</string>
+    <string name="string_choose_tags">Выберите теги</string>
+
 
     // profile activity
     <string name="adds_form">добавляет форму</string>
+    <string name="no_expense">Записей не найдено!</string>
+    <string-array name="spinner_array">
+        <item>Выберите сортировку</item>
+        <item>Описание По возрастанию</item>
+        <item>Описание По убыванию</item>
+        <item>Сумма по возрастанию</item>
+        <item>Сумма по убыванию</item>
+    </string-array>
+    <string name="description_ascending">Описание По возрастанию</string>
+    <string name="description_descending">Описание По убыванию</string>
+    <string name="amount_ascending">Сумма по возрастанию</string>
+    <string name="amount_descending">Сумма по убыванию</string>
 
     <string name="create_account">Зарегистрироваться</string>
     <string name="registration_button">регистр</string>
     <string name="registration_prename">Имя</string>
     <string name="registration_lastname">Фамилия</string>
     <string name="change_lang">Change language</string>
+
+// drawer menu
+    <string name="logout">Выйти</string>
+    <string name="home">Дом</string>
+
+    // filter
+    <string name="filter_label">Фильтр</string>
+    <string name="filter_description_hint">Описание фильтра</string>
+    <string name="filter_lower_hint">Нижний предел</string>
+    <string name="filter_upper_hint">Верхний предел</string>
+    <string name="filter_apply">Применять фильтр</string>
+    <string name="tags">Теги:</string>
+    <string name="no_tags">нет тегов</string>
+
 </resources>

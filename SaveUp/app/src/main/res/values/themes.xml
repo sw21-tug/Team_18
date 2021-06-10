@@ -22,4 +22,8 @@
     <style name="Theme.SaveUp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.SaveUp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/black</item>
+    </style>
+
 </resources>
