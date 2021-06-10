@@ -50,7 +50,6 @@ class IncomeFragment : Fragment() {
         }
 
         builder.setPositiveButton("OK") { _, _ ->
-            Toast.makeText(this.context, "Ok.", Toast.LENGTH_SHORT).show()
             var x = 0
             while (x < income_tags_array.size) {
                 if (income_check[x]) {

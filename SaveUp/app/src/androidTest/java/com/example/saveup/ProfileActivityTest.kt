@@ -36,7 +36,7 @@ class ProfileActivityTest {
             onView(withId(R.id.login_password)).perform(typeText("root")).
             perform(ViewActions.closeSoftKeyboard())
             onView(withId(R.id.login_button)).perform(click())
-            sleep(1000) // due to login delay
+            sleep(1500) // due to login delay
         }
     }
 
@@ -283,6 +283,61 @@ class ProfileActivityTest {
         onView(withId(R.id.drawerLayout)).perform(DrawerActions.close())
         onView(withId(R.id.form_button)).perform(click())
         onView(withText(R.string.tab_text_2)).check(matches(isDisplayed()))
+        pressBack()
+    }
+
+    @Test
+    fun checkFilter() {
+        onView(withId(R.id.filter_description)).perform(typeText("key"))
+        onView(withId(R.id.filter_amount_start)).perform(typeText("90"))
+        onView(withId(R.id.filter_amount_end)).perform(typeText("110"))
+        onView(withId(R.id.filter_tags_button)).perform(click())
+        onView(withText("Salary")).check(matches(isDisplayed()))
+        onView(withText("Salary")).perform(click())
+        onView(withText("OK")).perform(click())
+        onView(withId(R.id.filter_submit)).perform(click())
+        pressBack()
+    }
+
+    @Test
+    fun checkTagsExpenses() {
+        onView(withId(R.id.form_button)).perform(click())
+        onView(withText(R.string.tab_text_2)).perform(click())
+
+        onView(withId(R.id.euro_expense)).perform(typeText("1000"))
+        onView(withId(R.id.date_input_field_expense)).perform(typeText("01.01.2020"))
+        onView(withId(R.id.account_input_field_expense)).perform(typeText("business"))
+        onView(withId(R.id.category_input_field_expense)).perform(typeText("computer"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.description_input_field_expense))
+            .perform(typeText("monitor"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.tags_button_expense)).perform(click())
+        onView(withText("Car")).check(matches(isDisplayed()))
+        onView(withText("Car")).perform(click())
+        onView(withText("OK")).perform(click())
+        onView(withId(R.id.save_button_expense)).perform(click())
+        pressBack()
+    }
+
+    @Test
+    fun checkTagsIncome() {
+        onView(withId(R.id.form_button)).perform(click())
+        onView(withText(R.string.tab_text_1)).perform(click())
+
+        onView(withId(R.id.euro_income)).perform(typeText("12000"))
+        onView(withId(R.id.date_input_field_income)).perform(typeText("01.01.2020"))
+        onView(withId(R.id.account_input_field_income)).perform(typeText("business"))
+        onView(withId(R.id.category_input_field_income)).perform(typeText("Salary January"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.description_input_field_income))
+            .perform(typeText("Salary"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.tags_button_income)).perform(click())
+        onView(withText("Salary")).check(matches(isDisplayed()))
+        onView(withText("Salary")).perform(click())
+        onView(withText("OK")).perform(click())
+        onView(withId(R.id.save_button_income)).perform(click())
         pressBack()
     }
 }

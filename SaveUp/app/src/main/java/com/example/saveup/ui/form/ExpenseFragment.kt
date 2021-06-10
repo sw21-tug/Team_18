@@ -21,7 +21,7 @@ import java.nio.charset.Charset
 
 class ExpenseFragment : Fragment() {
     private var expense_check = booleanArrayOf(false, false, false, false, false, false, false)
-    private val expense_tags_array  = arrayOfNulls<String>(7)/*arrayOf("car", "groceries","personal hygiene", "cleaning products", "clothes", "rent", "luxury" )*/
+    private val expense_tags_array  = arrayOfNulls<String>(7)
     private val expense_tags_database : MutableList<String> = ArrayList()
     private lateinit var pageViewModel: PageViewModel
 
@@ -41,11 +41,8 @@ class ExpenseFragment : Fragment() {
     }
 
 
-    private fun expenseTags(){
-
-
+    private fun expenseTags() {
         lateinit var expense_tags: AlertDialog
-
 
         val builder = AlertDialog.Builder(this.context, R.style.MyDialogTheme)
         builder.setTitle(R.string.string_choose_tags)
@@ -54,7 +51,6 @@ class ExpenseFragment : Fragment() {
 
         }
         builder.setPositiveButton("OK") { _, _ ->
-            Toast.makeText(this.context,"Ok.",Toast.LENGTH_SHORT).show()
             var z = 0
             while(z < expense_tags_array.size){
                 if(expense_check[z]){

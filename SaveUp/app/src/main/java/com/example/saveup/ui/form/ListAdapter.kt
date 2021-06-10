@@ -15,8 +15,8 @@ class ListAdapter(val context: Context, val items: ArrayList<FormData>) :
         val formDate: TextView = view.form_date
         val formDescription: TextView = view.form_description
         val formAmount: TextView = view.form_amount
+        val formTags: TextView = view.form_tags
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -26,7 +26,6 @@ class ListAdapter(val context: Context, val items: ArrayList<FormData>) :
         )
     }
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val item = items[position]
@@ -34,13 +33,17 @@ class ListAdapter(val context: Context, val items: ArrayList<FormData>) :
         holder.formDate.text = item.date
         holder.formDescription.text = item.description
         holder.formAmount.text = item.amount.toString()
+        if(item.tags != "null") { // null comes as string
+            holder.formTags.text = item.tags
+        } else {
+            holder.formTags.text = context.resources.getString(R.string.no_tags)
+        }
 
         if (item.type == "income")
             holder.formAmount.setTextColor(context.resources.getColor(R.color.dark_green))
         else if (item.type == "expense")
             holder.formAmount.setTextColor(context.resources.getColor(R.color.wine))
     }
-
 
     override fun getItemCount(): Int {
         return items.size

@@ -8,7 +8,8 @@ class FormData (
     val type: String,
     val date: String,
     val description: String,
-    val amount: Int
+    val amount: Int,
+    val tags: String
     ) : Comparable<Any> {
     override fun compareTo(other: Any): Int {
         when (sortListBy){
