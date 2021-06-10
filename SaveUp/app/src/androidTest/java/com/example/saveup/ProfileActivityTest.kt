@@ -319,4 +319,25 @@ class ProfileActivityTest {
         onView(withId(R.id.save_button_expense)).perform(click())
         pressBack()
     }
+
+    @Test
+    fun checkTagsIncome() {
+        onView(withId(R.id.form_button)).perform(click())
+        onView(withText(R.string.tab_text_1)).perform(click())
+
+        onView(withId(R.id.euro_income)).perform(typeText("12000"))
+        onView(withId(R.id.date_input_field_income)).perform(typeText("01.01.2020"))
+        onView(withId(R.id.account_input_field_income)).perform(typeText("business"))
+        onView(withId(R.id.category_input_field_income)).perform(typeText("Salary January"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.description_input_field_income))
+            .perform(typeText("Salary"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.tags_button_income)).perform(click())
+        onView(withText("Salary")).check(matches(isDisplayed()))
+        onView(withText("Salary")).perform(click())
+        onView(withText("OK")).perform(click())
+        onView(withId(R.id.save_button_income)).perform(click())
+        pressBack()
+    }
 }
