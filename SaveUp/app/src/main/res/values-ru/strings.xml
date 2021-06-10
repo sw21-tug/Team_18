@@ -48,7 +48,7 @@
 
     // profile activity
     <string name="adds_form">добавляет форму</string>
-    <string name="no_expense">Никаких расходов пока не производилось!</string>
+    <string name="no_expense">Записей не найдено!</string>
     <string-array name="spinner_array">
         <item>Выберите сортировку</item>
         <item>Описание По возрастанию</item>
@@ -70,5 +70,14 @@
 // drawer menu
     <string name="logout">Выйти</string>
     <string name="home">Дом</string>
+
+    // filter
+    <string name="filter_label">Фильтр</string>
+    <string name="filter_description_hint">Описание фильтра</string>
+    <string name="filter_lower_hint">Нижний предел</string>
+    <string name="filter_upper_hint">Верхний предел</string>
+    <string name="filter_apply">Применять фильтр</string>
+    <string name="tags">Теги:</string>
+    <string name="no_tags">нет тегов</string>
 
 </resources>
